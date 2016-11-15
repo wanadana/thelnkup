@@ -1,5 +1,6 @@
 <br>
 <%= link_to "Log In", new_user_session_path %>
+<%= link_to "My profile", profile_path %>
 
 <% if user_signed_in? %>
 <%= current_user.first_name %>
