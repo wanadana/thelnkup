@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+  source 'https://rubygems.org'
 ruby '2.3.1'
 
 gem 'rails', '5.0.0.1'
@@ -17,6 +17,8 @@ gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'autoprefixer-rails'
 gem 'omniauth-facebook'
+gem 'cloudinary', '1.1.0'
+gem 'carrierwave'
 
 group :development, :test do
   gem 'binding_of_caller'
