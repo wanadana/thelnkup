@@ -1,5 +1,4 @@
-
-<%= form_for(current_user) do |f| %>
+<%= form_for(@user, url: edit_profile_path) do |f| %>
   <div class="row">
     <div class="col-sm-6 col-sm-offset-3">
       <div class="form-group">
@@ -16,7 +15,7 @@
         <%= f.hidden_field :photo_cache %>
       </div>
 
-      <%= f.submit 'Update Board', class: 'btn btn-default' %>
+      <%= f.submit 'Update Profile', class: 'btn btn-default' %>
     </div>
   </div>
 <% end %>
