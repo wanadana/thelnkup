@@ -3,8 +3,12 @@
 <%= link_to "My profile", profile_path %>
 
 <% if user_signed_in? %>
-<%= current_user.first_name %>
+
+  <p> Welcome <%= current_user.first_name %> </p>
   <%= link_to "Log Out", destroy_user_session_path, method: :delete %>
+  <br>
   <%= link_to "Create Group", new_users_group_path %>
+  <br>
+  <%= link_to "View Groups", groups_path %>
 <% end %>
 
