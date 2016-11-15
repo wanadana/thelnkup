@@ -7,6 +7,9 @@
   namespace :users do
     resources :groups
   end
+  resources :groups, only: [:index, :show] do
+    resources :memberships, only: [:new, :create, :update, :destroy]
+  end
   resource :profile, only: [:show, :edit, :update]
 
   root to: 'pages#home'
