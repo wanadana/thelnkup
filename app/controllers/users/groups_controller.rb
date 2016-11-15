@@ -1,4 +1,4 @@
-class GroupsController < ApplicationController
+class Users::GroupsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_categories, only: [:new, :create, :edit, :update]
   before_action :set_group, only: [:edit, :destroy]
