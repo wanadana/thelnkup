@@ -8,6 +8,7 @@ class Group < ApplicationRecord
   validates :picture: presence: true
   validates :link, presence: true, uniqueness: true
   validates :capacity, presence: true
+  validates :question, presence: :true
   validates :category, inclusion: { in: CATEGORIES, allow_nil: false }, presence: true
   mount_uploader :photo, PhotoUploader
 end
