@@ -38,14 +38,10 @@ class GroupsController < ApplicationController
   private
 
   def group_params
-    params.require(:group).permit(:title, :description, :city, :link, :capacity, :category, :picture)
+    params.require(:group).permit(:title, :description, :city, :link, :capacity, :category, :picture, :question)
   end
 
   def set_group
-    @group = Group.find(params[:id])
-  end
-
-  def set_board
     @group = Group.find(params[:id])
   end
 
