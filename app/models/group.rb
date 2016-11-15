@@ -3,7 +3,7 @@ class Group < ApplicationRecord
 
 
   has_many :users, through: :memberships
-  has_many :memberships
+  has_many :memberships, dependent: :destroy
   has_many :comments, dependent: :destroy
   validates :title, presence: true
   validates :description, presence: true
