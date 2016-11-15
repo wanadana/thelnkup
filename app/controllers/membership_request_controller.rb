@@ -1,5 +1,6 @@
 class MembershipRequestController < ApplicationController
   before_action :set_group, only: [:create, :destroy]
+
   def new
     @request = Request.new
   end
