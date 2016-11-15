@@ -14,10 +14,10 @@ class User < ApplicationRecord
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :location, presence: true
- # validates :photo, presence: true
- validates :email, presence: true, uniqueness: true
- validates :mobile, presence: true, uniqueness: true
- # mount_uploader :photo, PhotoUploader
+  validates :photo, presence: true
+  validates :email, presence: true, uniqueness: true
+  validates :mobile, presence: true, uniqueness: true
+  mount_uploader :photo, PhotoUploader
  def self.find_for_facebook_oauth(auth)
   user_params = auth.to_h.slice(:provider, :uid)
   user_params.merge! auth.info.slice(:email, :first_name, :last_name)
