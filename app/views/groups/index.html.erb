@@ -1,0 +1,15 @@
+<h2>Find your group</h2>
+
+<% @groups.each do |group| %>
+  <ul>
+    <li>
+      <%= group.title %>
+      <br>
+      <%= group.photo %>
+      <br>
+      <%= group.description %>
+      <br>
+      <%= link_to "Delete group", users_group_path(group), method: :delete, data: { confirm: 'Are you sure you want to delete this awesome board?' } %>
+    </li>
+  </ul>
+<% end %>
