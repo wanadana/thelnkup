@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161114163904) do
+ActiveRecord::Schema.define(version: 20161115094217) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 20161114163904) do
     t.string   "category"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.string   "question"
   end
 
   create_table "membership_requests", force: :cascade do |t|
@@ -42,7 +43,6 @@ ActiveRecord::Schema.define(version: 20161114163904) do
     t.integer  "group_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string   "question"
     t.text     "answer"
     t.index ["group_id"], name: "index_membership_requests_on_group_id", using: :btree
     t.index ["user_id"], name: "index_membership_requests_on_user_id", using: :btree
