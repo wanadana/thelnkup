@@ -20,3 +20,23 @@
     </div>
   </div>
 </div>
+
+<h2 id='comment_count'>
+  <%= pluralize @group.comments.size, "comment" %>
+</h2>
+
+<div id="new_comment">
+  <%= render 'comments/form_comment' %>
+</div>
+
+<div id="comments">
+  <% if @group.comments.blank? %>
+  <div id="no_comment">
+    Be the first to leave a comment for <%= @group.title %>
+  </div>
+  <% else %>
+    <% @group.comments.each do |comment| %>
+      <%= render 'comments/show_comment', comment: comment %>
+    <% end %>
+  <% end %>
+</div>
