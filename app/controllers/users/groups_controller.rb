@@ -1,4 +1,4 @@
-class GroupsController < ApplicationController
+class Users::GroupsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_categories, only: [:new, :create, :edit, :update]
   before_action :set_group, only: [:edit, :destroy]
@@ -38,7 +38,7 @@ class GroupsController < ApplicationController
   private
 
   def group_params
-    params.require(:group).permit(:title, :description, :city, :link, :capacity, :category, :picture, :question)
+    params.require(:group).permit(:title, :description, :city, :link, :capacity, :category, :photo, :photo_cache, :question)
   end
 
   def set_group
