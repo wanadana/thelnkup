@@ -1,7 +1,7 @@
 class Users::GroupsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_categories, only: [:new, :create, :edit, :update]
-  before_action :set_group, only: [:edit, :destroy]
+  before_action :set_group, only: [:create, :edit, :destroy]
 
   def new
     @group = Group.new
@@ -9,6 +9,7 @@ class Users::GroupsController < ApplicationController
 
   def create
     @group = Group.new(group_params)
+    @membership = Membership.create(user: current_user, status: approved, admin: true)
     @group.user = current_user
     if group.save
       redirect_to groups_path
