@@ -3,9 +3,9 @@
 <% @groups.each do |group| %>
   <ul>
     <li>
-      <%= group.title %>
+      <h3><%= group.title %></h3>
       <br>
-      <%= group.photo %>
+      <%= cl_image_tag(group.photo, height: 250, width: 350, crop: :fill) %>
       <br>
       <%= group.description %>
       <br>
