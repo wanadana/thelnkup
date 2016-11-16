@@ -6,6 +6,5 @@ class CategoriesController < ApplicationController
 
   def show
     @category = Category.find(params[:id])
-    @group = Group.category(params[id])
   end
 end

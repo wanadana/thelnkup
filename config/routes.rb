@@ -11,7 +11,9 @@
     resources :memberships, only: [:new, :create, :update, :destroy]
     resources :comments, only: [:create, :show]
   end
-  resource :profile, only: [:show, :edit, :update]
+  resources :profile, only: [:show, :edit, :update]
+
+  resources :categories, only: [:index, :show]
 
   root to: 'pages#home'
 end
