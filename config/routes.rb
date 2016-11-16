@@ -12,7 +12,9 @@
     resources :comments, only: [:create, :show]
   end
 
-  resources :categories, only: [:index, :show]
+  resources :categories, only: [:index, :show] do
+    resources :groups, only: [:index]
+  end
   resource :profile, only: [:show, :edit, :update]
   resource :require_infos, only: [:new, :create]
 
