@@ -1,0 +1,2 @@
+module RequireInfosHelper
+end
