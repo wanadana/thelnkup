@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="row">
+    <!-- User info -->
+    <div class="col-md-3">
+      <div class="profile">
+        <div class="profile-pic">
+          <%= cl_image_tag @group.photo, height: 200, width: 300, crop: :fill %>
+        </div>
+        <div class="profile-info">
+          <ul style="list-style-type: none;">
+            <li>
+              <%= @group.title %>
+            </li>
+            <li>
+              <%= @group.description%>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h2 id='comment_count'>
+  <%= pluralize @group.comments.size, "comment" %>
+</h2>
+
+<div id="new_comment">
+  <%= render 'comments/form_comment' %>
+</div>
+
+<div id="comments">
+  <% if @group.comments.blank? %>
+  <div id="no_comment">
+    Be the first to leave a comment for <%= @group.title %>
+  </div>
+  <% else %>
+    <% @group.comments.each do |comment| %>
+      <%= render 'comments/show_comment', comment: comment %>
+    <% end %>
+  <% end %>
+</div>

@@ -9,9 +9,12 @@ class Users::GroupsController < ApplicationController
 
   def create
     @group = Group.new(group_params)
-    @group.user = current_user
-    if group.save
-      redirect_to groups_path
+    @membership = Membership.create(user: current_user, status: 'approved', admin: true)
+    @group.memberships.build(admin: true, user: current_user)
+    # @group.users << current_user
+
+    if @group.save
+      redirect_to group_path(@group)
     else
       render :new
     end
@@ -38,7 +41,7 @@ class Users::GroupsController < ApplicationController
   private
 
   def group_params
-    params.require(:group).permit(:title, :description, :city, :link, :capacity, :category, :photo, :photo_cache, :question)
+    params.require(:group).permit(:title, :description, :location, :link, :capacity, :category, :photo, :photo_cache, :question)
   end
 
   def set_group

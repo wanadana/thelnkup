@@ -3,11 +3,11 @@ class Group < ApplicationRecord
 
 
   has_many :users, through: :memberships
-  has_many :memebership_requests
+  has_many :memberships, dependent: :destroy
   has_many :comments, dependent: :destroy
   validates :title, presence: true
   validates :description, presence: true
-  validates :city, presence: true
+  validates :location, presence: true
   validates :photo, presence: true
   validates :link, presence: true, uniqueness: true
   validates :capacity, presence: true

@@ -9,6 +9,7 @@
   end
   resources :groups, only: [:index, :show] do
     resources :memberships, only: [:new, :create, :update, :destroy]
+    resources :comments, only: [:create, :show]
   end
   resource :profile, only: [:show, :edit, :update]
   resource :require_infos, only: [:new, :create]
