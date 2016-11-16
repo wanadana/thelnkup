@@ -21,6 +21,10 @@
   </div>
 </div>
 
+<%= link_to "Home", root_path %>
+<br>
+<%= link_to "Become a Member", new_group_membership_path(@group) %>
+
 <h2 id='comment_count'>
   <%= pluralize @group.comments.size, "comment" %>
 </h2>
