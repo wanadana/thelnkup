@@ -1,1 +1,6 @@
-<p><%= comment.content %></p>
+<div class="row">
+  <div class="col-sm-6 col-sm-offset-3">
+    <p><%= comment.content %></p>
+    <p><%= comment.user.first_name + " " + comment.user.last_name + " - " + comment.created_at.strftime("%b %d, %Y") %></p>
+  </div>
+</div>

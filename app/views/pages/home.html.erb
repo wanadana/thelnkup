@@ -1,6 +1,6 @@
 <br>
 <%= link_to "Log In", new_user_session_path %>
-<%= link_to "My profile", profile_path %>
+<%#= link_to "My profile", profile_path %>
 
 <% if user_signed_in? %>
 
@@ -10,5 +10,7 @@
   <%= link_to "Create Group", new_users_group_path %>
   <br>
   <%= link_to "View Groups", groups_path %>
+  <br>
+  <%= link_to "View Categories", categories_path %>
 <% end %>
 

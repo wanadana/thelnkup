@@ -1,0 +1,14 @@
+<h2>Find your Category</h2>
+<%= link_to 'Back', root_path, class: "btn btn-default" %>
+<div class="container">
+  <div class="row">
+    <% @categories.each do |category| %>
+    <div class="col-sm-6 col-md-4">
+      <div class="thumbnail">
+        <%= image_tag(category.photo, height: 250, width: 350) %>
+        <h3><%= category.name %></h3>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>

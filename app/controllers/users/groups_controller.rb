@@ -5,6 +5,7 @@ class Users::GroupsController < ApplicationController
 
   def new
     @group = Group.new
+    @categories_with_id = Category.pluck(:id, :name)
   end
 
   def create
