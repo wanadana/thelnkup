@@ -38,6 +38,16 @@ ActiveRecord::Schema.define(version: 20161115141429) do
     t.string   "question"
   end
 
+  create_table "membership_requests", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "group_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text     "answer"
+    t.index ["group_id"], name: "index_membership_requests_on_group_id", using: :btree
+    t.index ["user_id"], name: "index_membership_requests_on_user_id", using: :btree
+  end
+
   create_table "memberships", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "group_id"
@@ -94,6 +104,8 @@ ActiveRecord::Schema.define(version: 20161115141429) do
 
   add_foreign_key "comments", "groups"
   add_foreign_key "comments", "users"
+  add_foreign_key "membership_requests", "groups"
+  add_foreign_key "membership_requests", "users"
   add_foreign_key "memberships", "groups"
   add_foreign_key "memberships", "users"
   add_foreign_key "unique_links", "groups"

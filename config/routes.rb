@@ -11,6 +11,7 @@
     resources :memberships, only: [:new, :create, :update, :destroy]
   end
   resource :profile, only: [:show, :edit, :update]
+  resource :require_infos, only: [:new, :create]
 
   root to: 'pages#home'
 end
