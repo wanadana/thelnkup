@@ -1,1 +1,23 @@
-<%= @groups %>
+<h1><%= @category.name %></h1>
+<div class="container">
+  <div class="row">
+    <%#= @groups.each do |group| %>
+
+  </div>
+</div>
+<% @category.groups.each do |group| %>
+<ul>
+  <li>
+    <h3><%= group.title %></h3>
+    <br>
+    <%= cl_image_tag(group.photo, height: 250, width: 350, crop: :fill) %>
+    <br>
+    <%= group.description %>
+    <br>
+    <%= link_to "Explore", category_group_path(@category, group) %>
+    <br>
+    <%= link_to "Delete group", users_group_path(group), method: :delete, data: { confirm: 'Are you sure you want to delete this awesome board?' } %>
+  </li>
+</ul>
+<% end %>
+<%= link_to 'Back', categories_path, class: "btn btn-default" %>
