@@ -20,23 +20,26 @@
     </div>
   </div>
 </div>
+<div class="row">
+  <div class="col-sm-6 col-sm-offset-3">
+    <h2 id='comment_count'>
+      <%= pluralize @group.comments.size, "comment" %>
+    </h2>
 
-<h2 id='comment_count'>
-  <%= pluralize @group.comments.size, "comment" %>
-</h2>
+    <div id="new_comment">
+      <%= render 'comments/form_comment' %>
+    </div>
 
-<div id="new_comment">
-  <%= render 'comments/form_comment' %>
-</div>
-
-<div id="comments">
-  <% if @group.comments.blank? %>
-  <div id="no_comment">
-    Be the first to leave a comment for <%= @group.title %>
-  </div>
-  <% else %>
-    <% @group.comments.each do |comment| %>
+    <div id="comments">
+      <% if @group.comments.blank? %>
+      <div id="no_comment">
+        Be the first to leave a comment for <%= @group.title %>
+      </div>
+      <% else %>
+      <% @group.comments.each do |comment| %>
       <%= render 'comments/show_comment', comment: comment %>
-    <% end %>
-  <% end %>
+      <% end %>
+      <% end %>
+    </div>
+  </div>
 </div>
