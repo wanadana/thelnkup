@@ -6,7 +6,15 @@ class MembershipsController <ApplicationController
   end
 
   def create
-    @membership = Membership.create(user: current_user)
+    @membership = Membership.new(membership_params)
+    @membership.user = current_user
+    @membership.group = @group
+    if @membership.save
+      redirect_to groups_path(@group)
+    else
+      raise
+      render :new
+    end
   end
 
   def destroy
@@ -18,5 +26,9 @@ class MembershipsController <ApplicationController
 
   def set_group
     @group = Group.find(params[:group_id])
+  end
+
+  def membership_params
+    params.require(:membership).permit(:answer)
   end
 end
