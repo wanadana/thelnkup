@@ -7,6 +7,11 @@
   namespace :users do
     resources :groups
   end
+
+  resources :categories do
+    resources :groups, only: [:index, :show], module: :categories
+  end
+
   resources :groups, only: [:index, :show] do
     resources :memberships, only: [:new, :create, :update, :destroy]
     resources :comments, only: [:create, :show]
