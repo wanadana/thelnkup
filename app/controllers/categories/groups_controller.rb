@@ -5,9 +5,9 @@ class Categories::GroupsController < ApplicationController
     @groups = @category.groups
   end
 
-  def show
-    @group = Group.find(params[:id])
-    @category = Category.find(params[:category_id])
-    @comment = Comment.new
-  end
+  # def show
+  #   @group = Group.find(params[:id])
+  #   @category = Category.find(params[:category_id])
+  #   @comment = Comment.new
+  # end
 end
