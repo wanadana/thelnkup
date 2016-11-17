@@ -12,4 +12,17 @@ class Group < ApplicationRecord
   validates :question, presence: :true
   # validates :category, inclusion: { in: CATEGORIES, allow_nil: false }, presence: true
   mount_uploader :photo, PhotoUploader
+
+  scope :search, ->(search) {
+    where("
+      title ILIKE ? OR
+      description ILIKE ? OR
+      location ILIKE ?" ,
+      "%#{search}%",
+      "%#{search}%",
+      "%#{search}%"
+    )
+  }
+
+  scope :sorted, ->{order(created_at: :desc)}
 end

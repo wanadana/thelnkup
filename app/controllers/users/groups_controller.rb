@@ -2,6 +2,10 @@ class Users::GroupsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_group, only: [:edit, :destroy]
 
+  def index
+    @group = Group.all
+  end
+
   def new
     @group = Group.new
     @categories_with_id = Category.pluck(:name, :id)
@@ -12,8 +16,8 @@ class Users::GroupsController < ApplicationController
     @group = Group.new(group_params)
     # @group.users << current_user
 
-    if @group.save!
-      @membership = Membership.create!(user: current_user, status: 'approved', admin: true, group: @group)
+    if @group.save
+      @membership = Membership.create(user: current_user, status: 'approved', admin: true, group: @group)
       redirect_to group_path(@group)
     else
       @categories_with_id = Category.pluck(:name, :id)
@@ -35,10 +39,9 @@ class Users::GroupsController < ApplicationController
   end
 
   def destroy
-    if @group.user == current_user
-      @group.destroy
-    end
-      redirect_to groups_path
+    @category = Category.find(params[:id])
+    @group.destroy
+      redirect_to category_groups_path(@group.category)
   end
 
   private
