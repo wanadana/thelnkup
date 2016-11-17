@@ -1,11 +1,10 @@
 class Users::GroupsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_categories, only: [:new, :create, :edit, :update]
   before_action :set_group, only: [:edit, :destroy]
 
   def new
     @group = Group.new
-    @categories_with_id = Category.pluck(:id, :name)
+    @categories_with_id = Category.pluck(:name, :id)
   end
 
   def create
@@ -17,6 +16,7 @@ class Users::GroupsController < ApplicationController
     if @group.save
       redirect_to group_path(@group)
     else
+      @categories_with_id = Category.pluck(:name, :id)
       render :new
     end
   end
@@ -42,15 +42,12 @@ class Users::GroupsController < ApplicationController
   private
 
   def group_params
-    params.require(:group).permit(:title, :description, :location, :link, :capacity, :category, :photo, :photo_cache, :question)
+    params.require(:group).permit(:title, :description, :location, :link, :capacity, :photo, :photo_cache, :question, :category_id)
   end
 
   def set_group
     @group = Group.find(params[:id])
   end
 
-  def set_categories
-    @categories = Group::CATEGORIES
-  end
 end
 

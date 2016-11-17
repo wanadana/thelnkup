@@ -6,7 +6,7 @@
     <div class="col-sm-6 col-md-4">
       <div class="thumbnail">
         <%= image_tag(category.photo, height: 250, width: 350) %>
-        <h3><%= category.name %></h3>
+        <h3><%= link_to category.name, category_groups_path(category) %></h3>
       </div>
     </div>
     <% end %>
