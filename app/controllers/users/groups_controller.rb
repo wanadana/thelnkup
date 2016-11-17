@@ -12,9 +12,9 @@ class Users::GroupsController < ApplicationController
     @group = Group.new(group_params)
     # @group.users << current_user
 
-    if @group.save
-      @membership = Membership.create(user: current_user, status: 'approved', admin: true, group: @group)
-      redirect_to category_group_path(@category, @group)
+    if @group.save!
+      @membership = Membership.create!(user: current_user, status: 'approved', admin: true, group: @group)
+      redirect_to group_path(@group)
     else
       @categories_with_id = Category.pluck(:name, :id)
       render :new
