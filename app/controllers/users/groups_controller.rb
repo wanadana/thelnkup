@@ -1,6 +1,6 @@
 class Users::GroupsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_group, only: [:edit, :destroy]
+  before_action :set_group, only: [:edit, :destroy, :index, :show]
 
   def new
     @group = Group.new
