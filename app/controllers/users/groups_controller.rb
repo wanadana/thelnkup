@@ -8,13 +8,13 @@ class Users::GroupsController < ApplicationController
   end
 
   def create
+    @category = Category.find(params[:group][:category_id])
     @group = Group.new(group_params)
-    @membership = Membership.create(user: current_user, status: 'approved', admin: true)
-    @group.memberships.build(admin: true, user: current_user)
     # @group.users << current_user
 
     if @group.save
-      redirect_to group_path(@group)
+      @membership = Membership.create(user: current_user, status: 'approved', admin: true, group: @group)
+      redirect_to category_group_path(@category, @group)
     else
       @categories_with_id = Category.pluck(:name, :id)
       render :new
@@ -35,8 +35,10 @@ class Users::GroupsController < ApplicationController
   end
 
   def destroy
-    @group.destroy
-    redirect_to groups_path
+    if @group.user == current_user
+      @group.destroy
+    end
+      redirect_to groups_path
   end
 
   private
@@ -48,6 +50,7 @@ class Users::GroupsController < ApplicationController
   def set_group
     @group = Group.find(params[:id])
   end
+
 
 end
 

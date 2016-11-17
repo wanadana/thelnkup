@@ -14,13 +14,12 @@
 
   resources :groups, only: [:index, :show] do
     resources :memberships, only: [:new, :create, :update, :destroy]
-    resources :comments, only: [:create, :show]
+    resources :comments, only: [:create]
   end
 
-  resources :categories, only: [:index, :show]
+  # resources :categories, only: [:index, :show]
   resource :profile, only: [:show, :edit, :update]
   resource :require_infos, only: [:new, :create]
-
 
   root to: 'pages#home'
 end

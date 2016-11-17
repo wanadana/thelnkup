@@ -24,7 +24,7 @@ vi<!-- group info -->
             <li>
               Founded <%= @group.created_at.strftime("%b %d, %Y") %>
             </li>
-            <%= link_to 'Back', groups_path, class: "btn btn-default" %>
+            <%= link_to 'Back', category_groups_path(@group.category), class: "btn btn-default" %>
           </ul>
         </div>
       </div>
