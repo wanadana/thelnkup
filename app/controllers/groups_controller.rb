@@ -9,6 +9,7 @@ class GroupsController < ApplicationController
     @comment = Comment.new
   end
 
+
   private
 
   def set_admin
@@ -16,7 +17,7 @@ class GroupsController < ApplicationController
   end
 
   def display_pending_memberships_if_ad
-    @pending_memberships = @group.memberships.pending if @admin
+    @pending_memberships = @group.memberships.pending.oldest_first.limit_three if @admin
   end
 
   def set_group

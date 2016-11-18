@@ -75,10 +75,10 @@
           <%= image_tag('http://placehold.it/350x350') %>
           <div class="card-name"><%= m.user.first_name %></div>
           <div class="card-answer">Answer 1:</div>
-          <div card="card-answer-content">m.user.answer</div>
+          <div card="card-answer-content"><%= m.answer %></div>
           <div class="actions">
-            <%= link_to 'Accept',"", class: "btn btn-success" %>
-            <%= link_to 'Reject', "", class: "btn btn-danger" %>
+            <%= link_to 'Accept', group_membership_accept_path(@group.id, m.id), method: :post, class: "btn btn-success" %>
+            <%= link_to 'Reject', group_membership_reject_path(@group.id, m.id), method: :post, class: "btn btn-danger" %>
           </div>
         </div>
       </div>
