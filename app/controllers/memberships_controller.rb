@@ -10,7 +10,7 @@ class MembershipsController <ApplicationController
     @membership.user = current_user
     @membership.group = @group
     if @membership.save
-      redirect_to groups_path(@group)
+      redirect_to group_path(@group)
     else
       raise
       render :new

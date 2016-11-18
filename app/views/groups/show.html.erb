@@ -75,9 +75,7 @@
           <%= image_tag('http://placehold.it/350x350') %>
           <div class="card-name"><%= m.user.first_name %></div>
           <div class="card-answer">Answer 1:</div>
-          <div card="card-answer-content">Bla die bla bla</div>
-          <div class="card-answer">Answer 2:</div>
-          <div card="card-answer-content">Bla die bla bla</div>
+          <div card="card-answer-content">m.user.answer</div>
           <div class="actions">
             <%= link_to 'Accept',"", class: "btn btn-success" %>
             <%= link_to 'Reject', "", class: "btn btn-danger" %>
@@ -85,7 +83,6 @@
         </div>
       </div>
       <% end  %>
-
     </div>
   </div>
   <% end  %>
