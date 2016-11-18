@@ -25,4 +25,5 @@ class Group < ApplicationRecord
   }
 
   scope :sorted, ->{order(created_at: :desc)}
+
 end

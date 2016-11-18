@@ -13,7 +13,9 @@
   end
 
   resources :groups, only: [:index, :show] do
-    resources :memberships, only: [:new, :create, :update, :destroy]
+    resources :memberships, only: [:new, :create, :update, :destroy] do
+      post :accept, :reject
+    end
     resources :comments, only: [:create]
   end
 
