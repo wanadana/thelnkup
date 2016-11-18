@@ -11,7 +11,7 @@ class User < ApplicationRecord
   devise :omniauthable, omniauth_providers: [:facebook]
 
   has_many :groups, through: :memberships
-  has_many :memebership_requests
+  has_many :memberships
   has_many :comments, dependent: :destroy
   validates :first_name, presence: true
   validates :last_name, presence: true
