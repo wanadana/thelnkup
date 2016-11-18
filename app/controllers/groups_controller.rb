@@ -4,6 +4,10 @@ class GroupsController < ApplicationController
   before_action :set_admin
   before_action :display_pending_memberships_if_ad
 
+  def index
+    @groups = Group.search(params[:search]).sorted
+  end
+
   def show
     @group = Group.find(params[:id])
     @comment = Comment.new
