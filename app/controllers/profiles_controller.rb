@@ -1,6 +1,8 @@
 class ProfilesController < ApplicationController
   def show
     @user = current_user
+    @usergroups = current_user.groups
+    @memberships = current_user.memberships.where(status:"pending")
   end
 
   def create
