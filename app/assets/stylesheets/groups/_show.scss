@@ -1,0 +1,21 @@
+
+.new-card {
+  position: relative;
+  height: 250px; display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid #333;
+  padding: 20px;
+}
+.new-card img {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  top: 0; right: 0;
+  border-radius: 100%;
+  margin: 5px 5px 0 0;
+}
+.new-card .actions {
+  display: flex;
+  justify-content: space-around;
+}
