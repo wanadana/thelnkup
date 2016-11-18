@@ -1,7 +1,7 @@
 class GroupsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_group, only: [:show]
-  before_action :set_admin
+  before_action :set_admin, only: [:show]
   before_action :display_pending_memberships_if_ad
 
   def index
