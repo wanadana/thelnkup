@@ -1,7 +1,5 @@
-<!-- group info -->
 <div class="container">
   <div class="row">
-    <!-- User info -->
     <div class="col-md-6">
       <div class="profile">
         <div class="profile-pic">
@@ -25,6 +23,9 @@
               Founded <%= @group.created_at.strftime("%b %d, %Y") %>
             </li>
             <%= link_to 'Back', category_groups_path(@group.category), class: "btn btn-default" %>
+            <li>
+            <%= link_to 'Join group', @group.link, target:"blank", class: "btn btn-default" %>
+            </li>
           </ul>
         </div>
       </div>
