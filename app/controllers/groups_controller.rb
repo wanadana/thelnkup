@@ -1,10 +1,11 @@
 class GroupsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_group, only: [:show]
+  before_action :set_admin
+  before_action :display_pending_memberships_if_ad
 
   def show
-    set_group
-    set_admin
-    display_pending_memberships_if_admin
+    @group = Group.find(params[:id])
     @comment = Comment.new
   end
 
@@ -14,7 +15,7 @@ class GroupsController < ApplicationController
     @admin = @group.memberships.admin.any? {|memships| memships.user == current_user}
   end
 
-  def display_pending_memberships_if_admin
+  def display_pending_memberships_if_ad
     @pending_memberships = @group.memberships.pending if @admin
   end
 

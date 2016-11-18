@@ -3,6 +3,7 @@
   <div class="row">
     <!-- User info -->
     <div class="col-md-6">
+
       <div class="profile">
         <div class="profile-pic">
           <%= cl_image_tag @group.photo, height: 200, width: 300, crop: :fill %>
@@ -64,15 +65,15 @@
   </div>
 </div>
 <div class="profile-info">
-  <%# if @display_pending_memberships_if_admin %>
-  <%#= @display_pending_memberships_if_admin %>
+<% if @admin %>
   <div class="container">
     <h2 class="text-center">Group Applicants:</h2>
     <div class="row">
+      <% @pending_memberships.each do |m| %>
       <div class="col-sm-12 col-md-4">
         <div class="new-card">
           <%= image_tag('http://placehold.it/350x350') %>
-          <div class="card-name">Name</div>
+          <div class="card-name"><%= m.user.first_name %></div>
           <div class="card-answer">Answer 1:</div>
           <div card="card-answer-content">Bla die bla bla</div>
           <div class="card-answer">Answer 2:</div>
@@ -83,6 +84,9 @@
           </div>
         </div>
       </div>
+      <% end  %>
+
     </div>
   </div>
+  <% end  %>
 </div>
