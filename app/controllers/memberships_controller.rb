@@ -1,6 +1,7 @@
 class MembershipsController <ApplicationController
-  before_action :set_group, only: [:new, :create, :destroy]
-
+  before_action :set_group, only: [:new, :create, :destroy, :accept, :reject]
+  before_action :set_membership, only: [:destroy, :accept, :reject]
+  before_action :set_admin
   def new
     @membership = @group.memberships.new
   end
@@ -10,7 +11,7 @@ class MembershipsController <ApplicationController
     @membership.user = current_user
     @membership.group = @group
     if @membership.save
-      redirect_to groups_path(@group)
+      redirect_to group_path(@group)
     else
       raise
       render :new
@@ -22,6 +23,18 @@ class MembershipsController <ApplicationController
     redirect_to root_path
   end
 
+
+  def accept
+    @membership.accept! if @admin
+    redirect_to group_path(@group)
+  end
+
+  def reject
+    @membership.reject! if @admin
+    redirect_to group_path(@group)
+  end
+
+
   private
 
   def set_group
@@ -30,5 +43,13 @@ class MembershipsController <ApplicationController
 
   def membership_params
     params.require(:membership).permit(:answer)
+  end
+
+  def set_membership
+    @membership = Membership.find(params[:membership_id])
+  end
+
+  def set_admin
+    @admin = @group.memberships.admin.any? {|memships| memships.user == current_user}
   end
 end

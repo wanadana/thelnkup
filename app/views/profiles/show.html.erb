@@ -1,3 +1,4 @@
+<!-- Profile info -->
 <div class="container">
   <div class="row">
     <!-- User info -->
@@ -15,17 +16,104 @@
               <%= current_user.email %>
             </li>
             <li>
-              <%= current_user.mobile %>
+              Mobile nr: <%= current_user.mobile %>
             </li>
             <li>
-              <%= current_user.location %>
+              Location: <%= current_user.location %>
             </li>
             <br>
             <%= link_to 'Edit Profile', edit_profile_path, class: "btn btn-default" %>
           </ul>
         </div>
       </div>
+      <!-- Users that have been accepted into your groups -->
+      <div class="profile-info">
+        <% if @admin %>
+        <div class="container">
+          <h2 class="text-center">Accepted in your groups:</h2>
+          <div class="row">
+            <% @pending_memberships.each do |m| %>
+            <div class="col-sm-12 col-md-4">
+              <div class="new-card">
+                <%= image_tag('http://placehold.it/350x350') %>
+                <div class="card-name"><%= m.user.first_name %></div>
+                <div class="card-group">Group Name</div>
+              </div>
+            </div>
+            <% end  %>
+          </div>
+        </div>
+        <% end  %>
+      </div>
+      <!--     Status of their group applications -->
+      <div class="profile-status">
+        <div class="container">
+          <h2 class="text-center">Status group applications:</h2>
+          <div class="row">
+            <div class="col-sm-12 col-md-4">
+              <div class="new-card">
+                <div class="card-group">Group Name</div>
+                <!-- if accepted show check mark -->
+                <!-- if rejected show cross -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Join links -->
+      <div class="profile-links">
+        <div class="container">
+          <h2 class="text-center">Click this link to chat!</h2>
+          <div class="row">
+            <div class="col-sm-12 col-md-4">
+              <div class="new-card">
+                <div class="card-group">Group Name</div>
+                <%= link_to 'Click here!',"", class: "btn btn-success" %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
+
+<!-- My groups -->
+<h4>My Groups</h4>
+<div class="container">
+  <div class="row">
+    <% @usergroups.each do |group| %>
+    <div class="col-sm-6 col-md-4">
+      <div class="card">
+        <%= cl_image_tag(group.photo, height: 150, width: 150, crop: :fill) %>
+        <div class="caption">
+          <ul>
+            <%= group.title %>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
+
+<!-- My membership requests -->
+
+<h4>My requests</h4>
+<div class="container">
+  <div class="row">
+    <% @memberships.each do |memberships| %>
+    <div class="col-sm-6 col-md-4">
+      <div class="card">
+      <%= cl_image_tag(memberships.group.photo, height: 150, width: 150, crop: :fill) %>
+        <div class="caption">
+          <%= memberships.group.title %>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
+
+
 
