@@ -11,7 +11,7 @@ class GroupsController < ApplicationController
   def show
     @group = Group.find(params[:id])
     @comment = Comment.new
-    @members = @group.users
+    @members = @group.memberships.approved.map {|membership|membership.user}
   end
 
 

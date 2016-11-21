@@ -89,7 +89,7 @@
 </div>
 
 <!-- members list for admin -->
-<% if current_user.memberships.where(group_id:@group, admin: true)%>
+<% if @admin %>
   <div class="container">
     <div class="row">
       <ul>
@@ -99,7 +99,6 @@
             <%= cl_image_tag member.photo, height: 200, width: 300, crop: :fill %>
             <%= member.first_name %>
             <%= member.last_name %>
-            <%#= member.photo %>
           </li>
         <% end %>
       </ul>
