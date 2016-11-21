@@ -1,4 +1,237 @@
-/* -------------------------------------
- * CSS code specific to home page
- * (margin/padding adjustments)
- * ------------------------------------- */
+.features {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  margin-right: auto;
+  margin-left: auto;
+  box-sizing: border-box;
+}
+
+.feature {
+  text-align: center;
+  position: relative;
+  vertical-align: middle;
+  padding-top: 58px;
+  padding-bottom: 52px;
+  margin-bottom: 24px;
+}
+
+.feature-light {
+  background-color: #DEF2C8;
+  width: 630px;
+  height: 927px;
+  margin-right: 20px;
+}
+
+.feature-text {
+  padding-bottom: 34px;
+}
+
+.feature-dark {
+  background-color: #D0E9EA;
+  width: 630px;
+}
+
+.img {
+  width: 100px;
+  height: 100px;
+  background-color: #FAF7EB;
+  border-radius: 50%;
+}
+
+/*  -----------------------------------------
+    :: Variables
+    -------------------------------------- */
+    $green: #99C24D;
+    $cubic-bezier: cubic-bezier(.2,.3,.25,.9);
+  $body-dark: #1C5253;
+
+  *, *:before, *:after { box-sizing: border-box; }
+  body { font-family: 'Open Sans', sans-serif; }
+
+  .container {
+    display: flex;
+    justify-content: center;
+    padding: 20vh 0;
+
+    &.reverse {
+      background: $body-dark;
+    }
+  }
+
+  .button {
+    position: relative;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.4;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    white-space: nowrap;
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+    transition: all 0.2s $cubic-bezier 0s;
+    color: $green;
+    display: inline-flex;
+    margin: 0;
+    padding: 0.875em 1.428571429em;
+    letter-spacing: 0.3em;
+
+    // The bottom border
+    &::after {
+      content: '';
+      width: 80%;
+      left: 50%;
+      height: 1px;
+      bottom: 0;
+      transform: translatex(-50%);
+      transition: width 0.2s $cubic-bezier 0.4s, background 0.2s $cubic-bezier 0s;
+      display: block;
+      position: absolute;
+      background: $green;
+    }
+
+    // The left/right/top borders
+    span {
+      display: block;
+      position: absolute;
+      transition: all 0.2s $cubic-bezier;
+      width: 100%;
+      top: 0;
+      left: 0;
+
+      &::before,
+      &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        background: $green;
+        transition: transform 0.2s $cubic-bezier;
+      }
+
+      // Left & Right Border
+      &:first-child {
+        height: 100%;
+
+        &::before, &::after {
+          width: 1px;
+          height: 100%;
+          bottom: 0;
+          transform: scale3d(1, 0 , 1);
+          transform-origin: bottom center;
+          transition: transform 0.2s $cubic-bezier 0.2s, background 0.2s $cubic-bezier 0s;
+        }
+          &::before { left: 0;  }
+          &::after  { right: 0; }
+      }
+
+
+      // Top Borders
+      &:last-child {
+        width: 100%;
+        height: 1px;
+
+        // Scale them down with scale3d to prevent jittering
+        &::before, &::after {
+          height: 1px;
+          width: 100%;
+          bottom: 0;
+          transform: scale3d(0, 1 , 1);
+          transition: transform 0.2s $cubic-bezier 0s, background 0.2s $cubic-bezier 0s;
+        }
+          &::before {
+            left: 0;
+            transform-origin: bottom left;
+          }
+
+          &::after  {
+            right: 0;
+            transform-origin: bottom right;
+          }
+      }
+    }
+
+
+    // The Magic! Animate Border Drawing on Hover
+    &:hover {
+      opacity: 1;
+      outline: 0;
+      color: $body-dark !important;
+      text-decoration: none;
+      transition: color 0.2s $cubic-bezier 0s;
+
+      /* Positioning */
+      &::after {
+        width: 100%;
+        background: $body-dark;
+        transition: width 0.2s $cubic-bezier 0s, background 0.2s $cubic-bezier 0s;
+      }
+
+      span {
+
+        &:first-child {
+          // The scale3d is what grows the element
+          &::before, &::after {
+            transform: scale3d(1, 1, 1);
+            background: $body-dark;
+            transition: transform 0.2s $cubic-bezier 0.2s, background 0.2s $cubic-bezier 0s;
+          }
+        }
+
+        &:last-child {
+          &::before, &::after {
+            transform: scale3d(1, 1, 1);
+            background: $body-dark;
+            transition: transform 0.2s $cubic-bezier 0.4s, background 0.2s $cubic-bezier 0s;
+          }
+        }
+      }
+    }
+
+
+    // Click-down styles
+    &:focus {
+      background: $body-dark;
+      color: white !important;
+      transition: all 0.2s $cubic-bezier;
+
+      &::after {
+        opacity: 0;
+      }
+    }
+
+
+    // Don't forget about inverse colors!
+    &.reverse {
+      &:hover {
+        color: white !important;
+
+        &::after { background: white; }
+
+        span {
+          &:first-child,
+          &:last-child {
+            &::before,
+            &::after {
+              background: white;
+            }
+          }
+        }
+      }
+
+      &:focus {
+        span {
+          &:first-child,
+          &:last-child {
+            &::before,
+            &::after {
+              background: $body-dark;
+            }
+          }
+        }
+      }
+    }
+  }
