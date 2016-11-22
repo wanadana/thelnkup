@@ -7,6 +7,9 @@
 @import "bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
+@import "slick";
+@import 'slick-theme';
+
 
 // Your CSS
 @import "layout/index";
@@ -15,3 +18,4 @@
 @import "vendor/index";
 @import "groups/index";
 @import "profiles/index";
+@import "categories/index"

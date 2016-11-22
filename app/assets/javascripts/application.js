@@ -3,6 +3,7 @@
 //= require bootstrap-sprockets
 //= require live_validations
 //= require modals
+//= require jquery.slick
 //= require_tree .
 
 $(document).ready(function(){
@@ -10,3 +11,4 @@ $(document).ready(function(){
     $(this).append('<span></span><span></span>')
   });
 });
+

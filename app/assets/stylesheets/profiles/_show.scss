@@ -17,3 +17,42 @@
   margin: 5px 5px 0 0;
 }
 
+.bg-grey {
+  background-color: #D0E9EA;
+  box-shadow: 1px 1px 1px rgba(0.5,0.5,0.5,0.5)
+}
+
+.users-slider {
+  text-align: center;
+  font-size: 30px;
+  width: 80%;
+  align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.slick-slide img {
+  margin: 0 auto;
+  border-radius: 50%;
+}
+
+.wrapper-green {
+  background-color: #DEF2C8;
+  box-shadow: 1px 1px 1px rgba(0.5,0.5,0.5,0.3)
+}
+
+h3 {
+  color: #99C24D;
+}
+
+.slick-prev::before, .slick-next::before {
+  color: #000;
+}
+
+.slick-next {
+  right: 5px;
+}
+
+.slick-prev {
+  left: 5px;
+}
