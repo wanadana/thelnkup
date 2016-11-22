@@ -1,3 +1,13 @@
+
+.logo{
+  background-color: #FAF7EB;
+  display: block;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
 .features {
   display: flex;
   flex-direction: row;
@@ -56,7 +66,7 @@
   body { font-family: 'Open Sans', sans-serif; }
 
   .container {
-    display: flex;
+    display: inline;
     justify-content: center;
     padding: 20vh 0;
 
