@@ -23,7 +23,7 @@
               Founded <%= @group.created_at.strftime("%b %d, %Y") %>
             </li>
             <%= link_to 'Back', category_groups_path(@group.category), class: "btn btn-default" %>
-            <%= link_to 'Join group', @group.link, target:"blank", class: "btn btn-default" %>
+            <%= link_to 'Join group', "https://chat.whatsapp.com/#{@group.link}", target:"blank", class: "btn btn-default" %>
           </ul>
         </div>
       </div>
@@ -65,7 +65,7 @@
 
 <!-- applicants container -->
 <div class="profile-info">
-<% if @admin %>
+  <% if @admin %>
   <div class="container">
     <h2 class="text-center">Group Applicants:</h2>
     <div class="row">
