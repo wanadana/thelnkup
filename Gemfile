@@ -19,6 +19,8 @@ gem 'autoprefixer-rails'
 gem 'omniauth-facebook'
 gem 'cloudinary', '1.1.0'
 gem 'carrierwave'
+gem "jquery-slick-rails"
+
 
 group :development, :test do
   gem 'binding_of_caller'

@@ -17,3 +17,25 @@
   margin: 5px 5px 0 0;
 }
 
+.bg-grey {
+  background-color: #E9F1F7;
+}
+
+.users-slider {
+  div {
+    text-align: center;
+    font-size: 30px;
+  }
+}
+
+.slick-prev::before, .slick-next::before {
+  color: #000;
+}
+
+.slick-next {
+  right: 5px;
+}
+
+.slick-prev {
+  left: -5px;
+}
