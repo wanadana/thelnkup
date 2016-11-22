@@ -2,6 +2,7 @@
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require live_validations
+//= require modals
 //= require_tree .
 
 $(document).ready(function(){
