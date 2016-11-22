@@ -5,11 +5,11 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-
+Membership.destroy_all
 Category.destroy_all
 User.destroy_all
 Group.destroy_all
-Membership.destroy_all
+
 
 puts "Creating DB content"
 
