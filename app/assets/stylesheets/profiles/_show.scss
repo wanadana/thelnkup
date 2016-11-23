@@ -19,30 +19,86 @@
 
 .bg-grey {
   background-color: #D0E9EA;
-  box-shadow: 1px 1px 1px rgba(0.5,0.5,0.5,0.5)
+  box-shadow: 0px 0px 5px rgba(0.5,0.5,0.5,0.5);
+  margin: 20px;
 }
 
 .users-slider {
   text-align: center;
   font-size: 30px;
-  width: 80%;
+  width: 90%;
   align: center;
   display: flex;
   justify-content: center;
 }
 
+.info-card {
+  box-shadow: 0px 0px 5px rgba(0.5,0.5,0.5,0.5);
+  margin: 10px;
+}
+
+.btn-edit {
+  background-color: transparent;
+  color: #FFECCC;
+  border: 3px solid #FFECCC;
+  border-radius: 2px;
+  padding: 10px 15px;
+  text-shadow: 0px 0px 0.5px rgba(0.3,0.3,0.3,0.3);
+  transition-duration: 0.2s;
+}
+
+.btn-edit:hover {
+  box-shadow: 0px 0px 1px rgba(0.5,0.5,0.5,0.5);
+}
+
 .slick-slide img {
   margin: 0 auto;
   border-radius: 50%;
+  box-shadow: 1px 1px 1px rgba(0.5,0.5,0.5,0.5);
+}
+
+.profile-pic img {
+  margin: 30px;
+  border-radius: 50%;
+  box-shadow: 0px 0px 3px rgba(0.5,0.5,0.5,0.5);
+}
+
+.profile-info {
+  margin: 30px;
+}
+
+.profile-info li {
+  margin: 10px;
+  padding-bottom: 10px;
+  border-bottom: solid #A7A2A9;
+}
+
+.link-card {
+  width: 80%;
+  background-image: url("san_fancisco.jpg");
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  margin: 10px;
+  height: 175px;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+  background-size: cover !important;
+  color: white;
+  position: relative;
 }
 
 .wrapper-green {
   background-color: #DEF2C8;
-  box-shadow: 1px 1px 1px rgba(0.5,0.5,0.5,0.3)
+  box-shadow: 1px 1px 3px rgba(0.5,0.5,0.5,0.3);
+  margin: 20px;
 }
 
-h3 {
-  color: #99C24D;
+.content h3 {
+  color: #FFECCC;
+  text-shadow: 2px 2px 0.5px rgba(0.5,0.5,0.5,0.3);
+}
+
+.mid_container {
+  height: 325px;
 }
 
 .slick-prev::before, .slick-next::before {
