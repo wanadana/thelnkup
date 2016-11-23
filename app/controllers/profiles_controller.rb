@@ -1,7 +1,7 @@
 class ProfilesController < ApplicationController
   def show
     @user = current_user
-    @usergroups = current_user.groups
+    @usergroups = current_user.memberships.where(status:"approved")
     @memberships = current_user.memberships.where(status:"pending")
   end
 
