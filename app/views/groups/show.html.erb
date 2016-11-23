@@ -15,7 +15,8 @@
               <p>Created: <%= @group.created_at.strftime("%b %d, %Y") %></p>
             </div>
             <div class="join-btn col-sm-6 col-sm-offset-6">
-              <%= link_to "Become a Member", new_group_membership_path(@group), class:"btn-join" %>
+              <%= link_to "Become a Member", "#", class:"btn-join", data: {toggle: "modal", target: "#myModal" } %>
+
             </div>
           </div>
           <div class="row">
@@ -69,6 +70,39 @@
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Become a Member</h4>
+      </div>
+      <div class="modal-body">
+        <h4>Complete the form below to register</h4>
+        <br>
+        <%= @group.question %>
+        <br>
+        <%= form_for([@group, @membership], url: group_memberships_path(group_id: @group.id)) do |f| %>
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="form-group">
+                <%= f.label :answer %>
+                <%= f.text_field :answer, placeholder:"Your response...", class: "form-control" %>
+              </div>
+              <%= f.button "Submit", class: "btn btn-block btn-login" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div> -->
     </div>
   </div>
 </div>
