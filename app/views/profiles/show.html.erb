@@ -23,14 +23,14 @@
                   Location: <%= current_user.location %>
                 </li>
                 <br>
-                <%= link_to 'Edit Profile', edit_profile_path, class: "btn-edit" %>
+                <%= link_to 'Edit Profile', edit_profile_path, class: "btn btn-edit" %>
               </ul>
             </div>
           </div>
           <div class="col-sm-6">
             <div class="link-card">
               <h2 class="text-center">Group Name</h2>
-             <%#= link_to 'Join group', "https://chat.whatsapp.com/#{@group.link}", target:"blank", class: "btn btn-default" %>
+             <%= link_to 'Join group', "#", target:"blank", class: "btn btn-default" %>
             </div>
           </div>
         </div>
@@ -41,7 +41,7 @@
 
 
 <!-- My groups -->
-<div class="container col-md-offset-2">
+<div class="container">
   <div class="row info-card">
     <div class="col-sm-12">
       <div class="content">
@@ -62,28 +62,30 @@
 </div>
 
       <!-- Users that have been accepted into your groups -->
-<div class="container wrapper-green">
-  <div class="row">
-    <div class="profile-info">
-      <% if @admin %>
-        <div class="container">
-          <h2 class="text-center">Accepted in your groups:</h2>
-          <div class="row">
-            <% @pending_memberships.each do |m| %>
-            <div class="col-sm-12 col-md-4">
-              <div class="new-card">
-                <%= image_tag('http://placehold.it/350x350') %>
-                <div class="card-name"><%= m.user.first_name %></div>
-                <div class="card-group">Group Name</div>
+<% if @admin %>
+  <div class="container wrapper-green">
+    <div class="row">
+      <div class="profile-info">
+        <%# if @admin %>
+          <div class="container">
+            <h2 class="text-center">Accepted in your groups:</h2>
+            <div class="row">
+              <% @pending_memberships.each do |m| %>
+              <div class="col-sm-12 col-md-4">
+                <div class="new-card">
+                  <%= image_tag('http://placehold.it/350x350') %>
+                  <div class="card-name"><%= m.user.first_name %></div>
+                  <div class="card-group">Group Name</div>
+                </div>
               </div>
+              <% end %>
             </div>
-            <% end %>
           </div>
-        </div>
-      <% end %>
+        <%# end %>
+      </div>
     </div>
   </div>
-</div>
+<% end %>
 
 <!-- User pending forup requests -->
 <!-- <div class="row">
