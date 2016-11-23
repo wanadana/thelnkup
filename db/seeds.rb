@@ -32,12 +32,24 @@ c1=Category.create!(name:"Sports", photo:"http://emojione.com/wp-content/uploads
 c3=Category.create!(name:"Tech", photo:"http://emojione.com/wp-content/uploads/assets/emojis/1f5a5.svg")
 c15=Category.create!(name:"Travel", photo:"http://emojione.com/wp-content/uploads/assets/emojis/2708.svg")
 
-u1=User.create!(first_name:"John", last_name:"Tomkins", photo:"https://s3-us-west-2.amazonaws.com/lumoid-photos/Inspiration/Canon-People-2.jpg", email:"john@tomkins.com", location:"London", mobile:"+44 7700900689", password:"letmein", password_confirmation:"letmein")
-u2=User.create!(first_name:"Lisa", last_name:"Alkin", photo:"https://s-media-cache-ak0.pinimg.com/originals/07/35/79/0735796a20d4aee1773f35ed2b2034ef.jpg", email:"lisa@alkin.com", location:"San Francisco", mobile:"+1 2124139795", password:"letmein", password_confirmation:"letmein")
-u3=User.create!(first_name:"Matthew", last_name:"Woods", photo:"http://www.designboom.com/wp-content/uploads/2014/08/ino-zeljak-stitches-two-different-people-portraits-designboom-07.jpg", email:"matthew@woods.com", location:"Amsterdam", mobile:"+31 0667903675", password:"letmein", password_confirmation:"letmein")
-u4=User.create!(first_name:"Antoine", last_name:"Dubois", photo:"http://www4.pictures.zimbio.com/gi/39th+Annual+People+Choice+Awards+Portraits+lza8vaU_QsZx.jpg", email:"antoine@dubois.com", location:"Paris", mobile:"+33 509758351", password:"letmein", password_confirmation:"letmein")
-u5=User.create!(first_name:"Camila", last_name:"Gallego", photo:"http://cdn.instantshift.netdna-cdn.com/wp-content/uploads/2011/10/httgppp-02.jpg", email:"Camila@Gallego.com", location:"Barcelona", mobile:"+34 7401 049141", password:"letmein", password_confirmation:"letmein")
-u6=User.create!(first_name:"Pontus", last_name:"Johansonn", photo:"http://media.istockphoto.com/photos/portrait-of-smiling-young-man-outdoors-picture-id478022628?k=6&m=478022628&s=170667a&w=0&h=18JwG_PEtRlbcJgQFz2Hjyp78xtnSwNaV9BuhJYUDB0=", email:"pontus@johansson.com", location:"Stockholm", mobile:"+46 1523 089264", password:"letmein", password_confirmation:"letmein")
+u1=User.new(first_name:"John", last_name:"Tomkins", email:"john@tomkins.com", location:"London", mobile:"+44 7700900689", password:"letmein", password_confirmation:"letmein")
+u1.remote_photo_url = "https://s3-us-west-2.amazonaws.com/lumoid-photos/Inspiration/Canon-People-2.jpg"
+u1.save!
+u2=User.new(first_name:"Lisa", last_name:"Alkin", email:"lisa@alkin.com", location:"San Francisco", mobile:"+1 2124139795", password:"letmein", password_confirmation:"letmein")
+u2.remote_photo_url = "https://s-media-cache-ak0.pinimg.com/originals/07/35/79/0735796a20d4aee1773f35ed2b2034ef.jpg"
+u2.save!
+u3=User.new(first_name:"Matthew", last_name:"Woods", email:"matthew@woods.com", location:"Amsterdam", mobile:"+31 0667903675", password:"letmein", password_confirmation:"letmein")
+u3.remote_photo_url = "http://www.designboom.com/wp-content/uploads/2014/08/ino-zeljak-stitches-two-different-people-portraits-designboom-07.jpg"
+u3.save!
+u4=User.new(first_name:"Antoine", last_name:"Dubois", email:"antoine@dubois.com", location:"Paris", mobile:"+33 509758351", password:"letmein", password_confirmation:"letmein")
+u4.remote_photo_url = "http://www4.pictures.zimbio.com/gi/39th+Annual+People+Choice+Awards+Portraits+lza8vaU_QsZx.jpg"
+u4.save!
+u5=User.new(first_name:"Camila", last_name:"Gallego", email:"Camila@Gallego.com", location:"Barcelona", mobile:"+34 7401 049141", password:"letmein", password_confirmation:"letmein")
+u5.remote_photo_url = "http://cdn.instantshift.netdna-cdn.com/wp-content/uploads/2011/10/httgppp-02.jpg"
+u5.save!
+u6=User.new(first_name:"Pontus", last_name:"Johansonn", email:"pontus@johansson.com", location:"Stockholm", mobile:"+46 1523 089264", password:"letmein", password_confirmation:"letmein")
+u6.remote_photo_url = "http://media.istockphoto.com/photos/portrait-of-smiling-young-man-outdoors-picture-id478022628?k=6&m=478022628&s=170667a&w=0&h=18JwG_PEtRlbcJgQFz2Hjyp78xtnSwNaV9BuhJYUDB0="
+u6.save!
 
 g1=Group.new(title:"Football Fanatics", description:"We love everything about football! In this group we cover all topics of football concerning the Europian big leagues. We also like to go the stadium or pub to watch the game we love", location:"London",  link:"Ak6a1ueynT27hbe9Jper5c", capacity:45, category_id:c1.id, question:"Why would you like to join?")
 g1.remote_photo_url = "http://i4.mirror.co.uk/incoming/article5530912.ece/ALTERNATES/s615/Arsenal-fans-singing-in-the-stands.jpg"
