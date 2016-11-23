@@ -5,12 +5,12 @@
     <h2>Explore</h2>
   </div>
   <div class="cell">
-  <%= form_tag groups_path, method: "get" do %>
+    <%= form_tag groups_path, method: "get" do %>
     <div class="searchbar">
       <input name="search" type="search" type="text" class="btn-extended" placeholder="search for a group" />
       <div class="btn-search"></div>
     </div>
-  <% end %>
+    <% end %>
   </div>
 </div>
 
@@ -18,19 +18,28 @@
 <div class="categories">
   <div class="row">
     <% @categories.each do |category| %>
+    <%= link_to category_groups_path(category) do %>
     <div class="col-sm-6 col-md-4">
       <div class="category">
         <div class="category-img-container">
-          <div class="category-img">
-            <%= image_tag (category.photo), class:"cat-img" %>
+          <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+            <div class="flipper">
+              <div class="front">
+                <div class="category-img">
+                  <%= image_tag (category.photo), class:"cat-img" %>
+                </div>
+              </div>
+              <div class="back">
+                <div class="category-img">
+                  <h3> <%= category.name %></h3>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-
-        <div class="text">
-          <h3><%= link_to category.name, category_groups_path(category) %></h3>
         </div>
       </div>
     </div>
+    <% end %>
     <% end %>
   </div>
 </div>
