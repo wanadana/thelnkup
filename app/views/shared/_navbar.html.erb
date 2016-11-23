@@ -3,10 +3,8 @@
   <%= image_tag "http://placehold.it/50x50" %>
   <% end %>
 
-  <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
 
-    <!-- Search form -->
     <form action="/groups",  class="navbar-wagon-search">
       <input name="search" type="text" class="navbar-wagon-search-input" placeholder="Search something">
       <button type="submit" class="navbar-wagon-search-btn">
@@ -14,12 +12,10 @@
       </button>
     </form>
 
-    <!-- Different navigation if login or not -->
     <% if user_signed_in? %>
 
     <%= current_user.email %>
 
-    <!-- Profile picture and dropdown -->
     <div class="navbar-wagon-item">
       <div class="dropdown">
         <% if current_user.facebook_picture_url %>
@@ -30,12 +26,7 @@
         <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
           <li>
             <%= link_to profile_path do %>
-            <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
-            <% end %>
-          </li>
-          <li>
-            <%= link_to root_path do %>
-            <i class="fa fa-home"></i>  <%= t(".profile", default: "Home") %>
+            <i class="fa fa-user"></i> <%= t(".profile", default: "My Profile") %>
             <% end %>
           </li>
           <li>
@@ -45,45 +36,39 @@
           </li>
         </ul>
       </div>
+
+      <% else %>
+
+      <a type="button" class="navbar-wagon-link" data-toggle="modal" data-target="#loginModal">
+        Log in
+      </a>
+      <br>
+      <a type="button" class="navbar-wagon-link" data-toggle="modal" data-target="#signupModal">
+        Sign up
+      </a>
+
+      <% end %>
+
+      <% if user_signed_in? %>
+
+      <%= link_to t(".top_call_to_action", default: "Lnkup Your Group"), new_users_group_path, class: "navbar-wagon-item navbar-wagon-button btn" %>
+
+      <% else %>
+
+      <%= link_to t(".top_call_to_action", default: "Lnkup Your Group"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-button btn" %>
+
+      <% end %>
     </div>
 
-    <% else %>
-
-    <!-- Login text link -->
-    <%#= link_to t(".sign_in", default: "Log in"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
-    <!-- Button trigger modal -->
-    <a type="button" class="navbar-wagon-link" data-toggle="modal" data-target="#loginModal">
-      Log in
-    </a>
-    <br>
-    <a type="button" class="navbar-wagon-link" data-toggle="modal" data-target="#signupModal">
-      Sign up
-    </a>
-    <%#= link_to t(".sign_up", default: "Sign up"), new_user_registration_path, class: "navbar-wagon-item navbar-wagon-link" %>
-
-    <% end %>
-
-    <% if user_signed_in? %>
-
-    <!-- Button (call-to-action) -->
-    <%= link_to t(".top_call_to_action", default: "Lnkup Your Group"), new_users_group_path, class: "navbar-wagon-item navbar-wagon-button btn" %>
-
-    <% else %>
-
-    <%= link_to t(".top_call_to_action", default: "Lnkup Your Group"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-button btn" %>
-
-    <% end %>
-  </div>
-
-  <!-- Dropdown appearing on mobile only -->
-  <div class="navbar-wagon-item hidden-md hidden-lg">
-    <div class="dropdown">
-      <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
-      <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-        <li><a href="#">Some mobile link</a></li>
-        <li><a href="#">Other one</a></li>
-        <li><a href="#">Other one</a></li>
-      </ul>
+    <div class="navbar-wagon-item hidden-md hidden-lg">
+      <div class="dropdown">
+        <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
+        <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+          <li><a href="#">Some mobile link</a></li>
+          <li><a href="#">Other one</a></li>
+          <li><a href="#">Other one</a></li>
+        </ul>
+      </div>
     </div>
   </div>
 </div>
