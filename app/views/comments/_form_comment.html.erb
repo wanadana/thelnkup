@@ -1,9 +1,8 @@
 <%= form_for [@group, @comment] do |f| %>
 <div class="row">
-  <div class="col-sm-6 col-sm-offset-3">
+  <div class="col-sm-6">
     <div class="form-group">
-      <%= f.label :content %>
-      <%= f.text_field :content, placeholder:"Something about this group", class: "form-control" %>
+      <%= f.text_field :content, placeholder:"Write your comment here", class: "form-control", label: false %>
     </div>
   </div>
 </div>

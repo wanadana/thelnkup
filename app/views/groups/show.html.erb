@@ -1,107 +1,93 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-6">
-      <div class="profile">
-        <div class="profile-pic">
-          <%= cl_image_tag @group.photo, height: 200, width: 300, crop: :fill %>
-          </div
-
-          <ul style="list-style-type: none;">
-            <li>
-              <%= @group.title %>
-            </li>
-            <li>
-              <%= @group.description%>
-            </li>
-            <li>
-              Location: <%= @group.location%>
-            </li>
-            <li>
-              Category: <%= @group.category.name %>
-            </li>
-            <li>
-              Founded <%= @group.created_at.strftime("%b %d, %Y") %>
-            </li>
-            <%= link_to 'Back', category_groups_path(@group.category), class: "btn btn-default" %>
-            <%= link_to 'Join group', "https://chat.whatsapp.com/#{@group.link}", target:"blank", class: "btn btn-default" %>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- in-group comments -->
-<div class="row">
-  <div class="col-sm-6 col-sm-offset-3">
-    <h2 id='comment_count'>
-      <%= pluralize @group.comments.size, "comment" %>
-    </h2>
-
-    <%= link_to "Home", root_path %>
-    <br>
-    <%= link_to "Become a Member", new_group_membership_path(@group) %>
-
-    <h2 id='comment_count'>
-      <%= pluralize @group.comments.size, "comment" %>
-    </h2>
-
-    <div id="new_comment">
-      <%= render 'comments/form_comment' %>
-    </div>
-
-    <div id="comments">
-      <% if @group.comments.blank? %>
-      <div id="no_comment">
-        Be the first to leave a comment for <%= @group.title %>
-      </div>
-      <% else %>
-      <% @group.comments.each do |comment| %>
-      <%= render 'comments/show_comment', comment: comment %>
-      <% end %>
-      <% end %>
-    </div>
-  </div>
-</div>
-
-<!-- applicants container -->
-<div class="profile-info">
-  <% if @admin %>
+<div class="group-profile">
   <div class="container">
-    <h2 class="text-center">Group Applicants:</h2>
     <div class="row">
-      <% @pending_memberships.each do |m| %>
-      <div class="col-sm-12 col-md-4">
-        <div class="new-card">
-          <%= image_tag('http://placehold.it/350x350') %>
-          <div class="card-name"><%= m.user.first_name %></div>
-          <div class="card-answer">Answer 1:</div>
-          <div card="card-answer-content"><%= m.answer %></div>
-          <div class="actions">
-            <%= link_to 'Accept', group_membership_accept_path(@group.id, m.id), method: :post, class: "btn btn-success" %>
-            <%= link_to 'Reject', group_membership_reject_path(@group.id, m.id), method: :post, class: "btn btn-danger" %>
+      <div class="col-sm-6">
+        <div class="profile">
+          <div class="row">
+            <div class="profile-picture col-sm-6">
+              <%= cl_image_tag @group.photo, height: 200, width: 300, crop: :fill %>
+            </div>
+            <div class="profile-description col-sm-6">
+              <h3><%= @group.title %></h3>
+              <p><%= @group.description%></p>
+              <p>Location: <%= @group.location%></p>
+              <p>Category: <%= @group.category.name %></p>
+              <p>Created: <%= @group.created_at.strftime("%b %d, %Y") %></p>
+            </div>
+            <div class="join-btn col-sm-6 col-sm-offset-6">
+              <%= link_to "Become a Member", new_group_membership_path(@group), class:"btn-join" %>
+            </div>
+          </div>
+          <div class="row">
+          <div class="profile-info col-sm-6">
+              <% if @admin %>
+              <h3 class="text-left">Group Applicants:</h3>
+            </div>
+            <div class="row">
+              <% @pending_memberships.each do |m| %>
+              <div class="col-sm-12 col-md-6">
+                <div class="new-card">
+                  <%= image_tag('http://placehold.it/350x350') %>
+                  <div class="card-name"><%= m.user.first_name %></div>
+                  <div class="card-answer">Answer 1:</div>
+                  <div card="card-answer-content"><%= m.answer %></div>
+                  <div class="actions">
+                    <%= link_to 'Accept', group_membership_accept_path(@group.id, m.id), method: :post, class: "btn btn-success" %>
+                    <%= link_to 'Reject', group_membership_reject_path(@group.id, m.id), method: :post, class: "btn btn-danger" %>
+                  </div>
+                </div>
+              </div>
+              <% end %>
+            </div>
+            <% end %>
           </div>
         </div>
       </div>
-      <% end  %>
     </div>
   </div>
-  <% end  %>
+  <!-- in-group comments -->
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6">
+        <h3 id='comment_count'>
+          <%= pluralize @group.comments.size, "comment" %>
+        </h3>
+        <div class="row">
+          <div id="new_comment col-sm-6">
+            <%= render 'comments/form_comment' %>
+          </div>
+          <div id="comments">
+            <% if @group.comments.blank? %>
+            <div id="no_comment">
+              Be the first to leave a comment for <%= @group.title %>
+            </div>
+            <% else %>
+            <% @group.comments.each do |comment| %>
+            <%= render 'comments/show_comment', comment: comment %>
+            <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
-<!-- members list for admin -->
-<% if @admin %>
+<!-- members list for admin
+  <%# if @admin %>
   <div class="container">
     <div class="row">
       <ul>
-      <h2>Members</h2>
-        <% @members.each do |member| %>
-          <li>
-            <%= cl_image_tag member.photo, height: 200, width: 300, crop: :fill %>
-            <%= member.first_name %>
-            <%= member.last_name %>
-          </li>
-        <% end %>
+        <h2>Members</h2>
+        <%# @members.each do |member| %>
+        <li>
+          <%#= cl_image_tag member.photo, height: 200, width: 300, crop: :fill %>
+          <%#= member.first_name %>
+          <%#= member.last_name %>
+        </li>
+        <#% end %>
       </ul>
     </div>
   </div>
-<% end %>
+  <%# end %>
+</div> -->

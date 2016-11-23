@@ -6,7 +6,7 @@ class Membership < ApplicationRecord
 
   scope :pending, -> { where(status: 'pending') }
   scope :approved, -> { where(status: 'approved') }
-  scope :limit_three, -> { limit(3) }
+  scope :limit_three, -> { limit(1) }
   scope :oldest_first, -> { order(:created_at) }
 
   def accept!
