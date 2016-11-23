@@ -2,75 +2,80 @@
   <div class="container">
     <div class="row">
       <div class="col-sm-6">
-        <div class="profile">
+
           <div class="row">
-            <div class="profile-picture col-sm-6">
-              <%= cl_image_tag @group.photo, height: 200, width: 300, crop: :fill %>
+            <div class="col-sm-6">
+              <div class="profile-picture ">
+                <%= cl_image_tag @group.photo, height: 200, width: 200, crop: :fill %>
+              </div>
             </div>
-            <div class="profile-description col-sm-6">
-              <h3><%= @group.title %></h3>
-              <p><%= @group.description%></p>
-              <p>Location: <%= @group.location%></p>
-              <p>Category: <%= @group.category.name %></p>
-              <p>Created: <%= @group.created_at.strftime("%b %d, %Y") %></p>
-            </div>
-            <div class="join-btn col-sm-6 col-sm-offset-6">
-              <%= link_to "Become a Member", new_group_membership_path(@group), class:"btn-join" %>
-            </div>
-          </div>
-          <div class="row">
-          <div class="profile-info col-sm-6">
-              <% if @admin %>
-              <h3 class="text-left">Group Applicants:</h3>
-            </div>
-            <div class="row">
-              <% @pending_memberships.each do |m| %>
-              <div class="col-sm-12 col-md-6">
-                <div class="new-card">
-                  <%= image_tag('http://placehold.it/350x350') %>
-                  <div class="card-name"><%= m.user.first_name %></div>
-                  <div class="card-answer">Answer 1:</div>
-                  <div card="card-answer-content"><%= m.answer %></div>
-                  <div class="actions">
-                    <%= link_to 'Accept', group_membership_accept_path(@group.id, m.id), method: :post, class: "btn btn-success" %>
-                    <%= link_to 'Reject', group_membership_reject_path(@group.id, m.id), method: :post, class: "btn btn-danger" %>
-                  </div>
+            <div class="col-sm-6">
+              <div class="profile-description">
+                <h3><%= @group.title %></h3>
+                <p><%= @group.description%></p>
+                <p>Location: <%= @group.location%></p>
+                <p>Category: <%= @group.category.name %></p>
+                <p>Created: <%= @group.created_at.strftime("%b %d, %Y") %></p>
+                <div class="join-btn">
+                  <%= link_to "Become a Member", new_group_membership_path(@group), class:"btn btn-join" %>
                 </div>
               </div>
-              <% end %>
             </div>
-            <% end %>
+
+        </div>
+      </div>
+      <% if @admin %>
+      <div class="col-sm-12 col-md-6">
+        <div class="profile-admin">
+          <div class="profile-info">
+            <h3 class="text-left">Pending Group Application: (<%=  @pending_memberships.count %>)</h3>
+          </div>
+          <% @pending_memberships.each do |m| %>
+          <div class="new-card">
+            <%= image_tag('http://placehold.it/350x350') %>
+            <div class="card-name"><%= m.user.first_name %></div>
+            <div class="card-answer">Answer 1:</div>
+            <div card="card-answer-content"><%= m.answer %></div>
+            <div class="actions">
+              <%= link_to 'Accept', group_membership_accept_path(@group.id, m.id), method: :post, class: "btn btn-join" %>
+              <%= link_to 'Decline', group_membership_reject_path(@group.id, m.id), method: :post, class: "btn btn-reject" %>
+            </div>
           </div>
         </div>
       </div>
+    <% end %>
+    <% end %>
     </div>
   </div>
-  <!-- in-group comments -->
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-6">
-        <h3 id='comment_count'>
-          <%= pluralize @group.comments.size, "comment" %>
-        </h3>
-        <div class="row">
+</div>
+
+<!-- in-group comments -->
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6">
+      <p id='comment_count'>
+        <%= pluralize @group.comments.size, "comment" %>
+      </p>
+      <div class="row">
+        <div id="comments">
+          <% if @group.comments.blank? %>
+          <div id="no_comment">
+            Be the first to leave a comment for <%= @group.title %>
+          </div>
+          <% else %>
+          <% @group.comments.each do |comment| %>
+          <%= render 'comments/show_comment', comment: comment %>
+          <% end %>
+          <% end %>
           <div id="new_comment col-sm-6">
             <%= render 'comments/form_comment' %>
           </div>
-          <div id="comments">
-            <% if @group.comments.blank? %>
-            <div id="no_comment">
-              Be the first to leave a comment for <%= @group.title %>
-            </div>
-            <% else %>
-            <% @group.comments.each do |comment| %>
-            <%= render 'comments/show_comment', comment: comment %>
-            <% end %>
-            <% end %>
-          </div>
         </div>
       </div>
     </div>
   </div>
+</div>
+</div>
 </div>
 
 <!-- members list for admin
