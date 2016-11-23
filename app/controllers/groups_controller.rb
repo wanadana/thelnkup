@@ -22,7 +22,7 @@ class GroupsController < ApplicationController
   end
 
   def display_pending_memberships_if_ad
-    @pending_memberships = @group.memberships.pending.oldest_first.limit_three if @admin
+    @pending_memberships = @group.memberships.pending.oldest_first.limit_one if @admin
   end
 
   def set_group
