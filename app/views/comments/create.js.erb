@@ -1,0 +1,17 @@
+console.log('wel zo nicesss');
+<% if @comment.errors.any? %>
+  // Render new comment form with errors
+ console.log('niet zo nice');
+  $('#new_comment').html("<%= j render 'comments/show_comment', group: @group, comment: @comment %>");
+<% else %>
+  // Create a paragraph for the new comment. But hide it.
+  console.log('wel zo nicesss');
+  var new_comment = $("<%= j render 'comments/show_comment', comment: @comment %>").hide();
+  // Add it to the DOM, at the end of the existing comments. It's still hidden.
+  $('#comments').append(new_comment);
+  console.log('wel zo nice');
+  // Show the new comment with an animation!
+  new_comment.slideDown();
+  // Reset the form
+  $('#new_comment').html("<%= j render 'comments/show_comment', group: @group, comment: Comment.new %>");
+<% end %>

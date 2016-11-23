@@ -65,14 +65,8 @@
   *, *:before, *:after { box-sizing: border-box; }
   body { font-family: 'Open Sans', sans-serif; }
 
-  .container {
-    display: inline;
-    justify-content: center;
-    padding: 20vh 0;
-
-    &.reverse {
-      background: $body-dark;
-    }
+  .container.reverse {
+    background: $body-dark;
   }
 
   .button {

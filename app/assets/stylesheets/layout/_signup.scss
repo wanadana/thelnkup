@@ -1,0 +1,80 @@
+.form-inputs {
+  background-position: right -28px;
+  font-size: 16px;
+}
+
+.btn-signup {
+  color: #99C24D;
+  background-color: transparent;
+  border-color: #99C24D;
+}
+
+.btn-signup:hover {
+  color: #fff;
+  background-color: #99C24D;
+  transition: 200ms ease-in;
+  border-color: transparent;
+}
+
+.signup-or-separator {
+  background-color: 0;
+  height: 34px;
+  position: relative;
+  text-align:center;
+  margin-bottom: 0px;
+  margin-top: 0px;
+}
+
+.signup-or-separator--text {
+  background-color: #fff;
+  display: inline-block;
+  padding: 8px;
+  margin-bottom: 0px;
+  margin-top: 0px;
+}
+
+.btn-fb {
+  border-color: #3B5998;
+  background-color: transparent;
+  color: #3B5998;
+  text-align: center;
+  text-decoration: none;
+}
+
+.btn-fb:hover {
+  border-color: #3B5998;
+  background-color: #3B5998;
+  color: #fff;
+  transition: 200ms ease-in;
+  border-color: transparent;
+}
+
+.signupp {
+  text-decoration: none;
+  float: left;
+  display: inline-block;
+  margin-right: 4px;
+  line-height: 34px;
+  font-size: 16px;
+}
+
+.btn-sign{
+  text-decoration: none;
+  border: 1px solid #99C24D;
+  color: #99C24D;
+  float: right;
+  padding: 7px 21px;
+  font-size: 14px;
+  border-radius: 4px;
+  text-align: center;
+  width: 100px;
+}
+
+.btn-sign:hover {
+  text-decoration: none;
+  border: 1px solid #99C24D;
+  color: #99C24D;
+  cursor:pointer;
+}
+
+

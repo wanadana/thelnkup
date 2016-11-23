@@ -1,11 +1,32 @@
-<%= link_to 'Back', root_path, class: "btn btn-default" %>
-<div class="container">
+
+<!-- search & explore -->
+<div class="header">
+  <div class="explore">
+    <h2>Explore</h2>
+  </div>
+  <div class="cell">
+  <%= form_tag groups_path, method: "get" do %>
+    <div class="searchbar">
+      <input name="search" type="search" type="text" class="btn-extended" placeholder="search for a group" />
+      <div class="btn-search"></div>
+    </div>
+  <% end %>
+  </div>
+</div>
+
+<!-- categories -->
+<div class="categories">
   <div class="row">
     <% @categories.each do |category| %>
     <div class="col-sm-6 col-md-4">
-      <div class="card">
-      <%= image_tag(category.photo, height: 200, width: 300, crop: :fill) %>
-        <div class="caption">
+      <div class="category">
+        <div class="category-img-container">
+          <div class="category-img">
+            <%= image_tag (category.photo), class:"cat-img" %>
+          </div>
+        </div>
+
+        <div class="text">
           <h3><%= link_to category.name, category_groups_path(category) %></h3>
         </div>
       </div>
@@ -13,3 +34,4 @@
     <% end %>
   </div>
 </div>
+
