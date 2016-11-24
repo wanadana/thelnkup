@@ -23,7 +23,7 @@
       <div class="col-sm-12 col-md-6 col-xs-12">
         <div class="profile-admin">
           <div class="profile-info">
-            <span class="pending-group-title text-left">Pending group application: (<%=  @pending_memberships.count %>)</span>
+            <span class="pending-group-title text-left">Pending group applications: (<%=  @pending_memberships.count %>)</span>
           </div>
           <% @pending_memberships.each do |m| %>
           <div class="new-card">
@@ -36,7 +36,7 @@
                 </div>
                 <div class="actions">
                   <div>
-                    <%= link_to 'Accept', group_membership_accept_path(@group.id, m.id), method: :post, class: "btn btn-join" %>
+                    <%= link_to 'Approve', group_membership_approve_path(@group.id, m.id), method: :post, class: "btn btn-join" %>
                   </div>
                   <div>
                     <%= link_to 'Decline', group_membership_reject_path(@group.id, m.id), method: :post, class: "btn btn-reject" %>
@@ -89,7 +89,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Become a Member</h4>
+        <h4 class="modal-title" id="myModalLabel">Become a member</h4>
       </div>
       <div class="modal-body">
         <h4>Complete the form below to register</h4>

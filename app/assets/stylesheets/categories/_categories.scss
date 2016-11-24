@@ -10,6 +10,10 @@
   padding-bottom: 50px;
 }
 
+#search {
+
+}
+
 .cell {
   display: flex;
   align-items: center;
@@ -31,6 +35,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  color: black;
 }
 
 .cat-img {
@@ -83,7 +88,7 @@
     top: 50%;  margin-top:  -35px;
     border-radius: 40px;
     cursor: pointer;
-    transition: all 0.4s ease-in-out;
+    transition: all 0.3s ease-in-out;
 
     &:before{
       position: absolute;

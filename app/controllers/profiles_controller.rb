@@ -3,8 +3,9 @@ class ProfilesController < ApplicationController
 
   def show
     @user = current_user
-    @usergroups = current_user.memberships.where(status:"approved")
-    @memberships = current_user.memberships.where(status:"pending")
+    @admin_memberships = current_user.memberships.admin
+    @approved_memberships = current_user.memberships.approved
+    @joined_memberships = current_user.memberships.joined
   end
 
   def create
