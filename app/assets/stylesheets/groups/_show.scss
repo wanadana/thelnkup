@@ -1,45 +1,47 @@
 .group-profile{
   margin: 10px;
-  background-color: #eee;
-  height: 319px;
+  background-color: #eeeeee;
+  border-radius: 3px;
+  box-shadow: 0 1px 1px 0 rgba(0,0,0,.06),0 2px 5px 0 rgba(0,0,0,.2);
 }
 
 .profile-picture img {
   border-radius: 50%;
+  padding: 10px;
 }
 
 .btn-join {
-  color: #99C24D;
-  background-color: transparent;
-  border-color: #99C24D;
+  color: #fff;
+  background-color: #8bd3d7;
+  border-color: #8bd3d7;
   text-decoration: none;
-  margin-top: 10px;
+  margin-top: 20px;
 }
 
 .btn-join:hover {
   color: #fff;
-  background-color: #99C24D;
+  background-color: #76c8a9;
   transition: 200ms ease-in;
   border-color: transparent;
   text-decoration: none;
-  margin-top: 10px;
 }
 
 .btn-reject {
-  color: #e9322d;
-  background-color: transparent;
-  border-color: #e9322d;
+  color: #fff;
+  background-color: #A64253;
+  border-color: #A64253;
   text-decoration: none;
-  margin-top: 10px;
+  margin-top: 20px;
 }
 
 .btn-reject:hover {
   color: #fff;
-  background-color: #e9322d;
+  background-color: #AF1B3F;
+  border-color: #AF1B3F;
   transition: 200ms ease-in;
   border-color: transparent;
   text-decoration: none;
-  margin-top: 10px;
+  margin-top: 20px;
 }
 
 .new-card {
@@ -109,3 +111,6 @@ top: 57px;
   display: flex;
 }
 
+#comments {
+margin-bottom: 50px;
+}

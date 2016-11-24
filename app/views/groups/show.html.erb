@@ -2,26 +2,24 @@
   <div class="container">
     <div class="row">
       <div class="col-sm-6">
-
-          <div class="row">
-            <div class="col-sm-6">
-              <div class="profile-picture ">
-                <%= cl_image_tag @group.photo, height: 200, width: 200, crop: :fill %>
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="profile-picture ">
+              <%= cl_image_tag @group.photo, height: 200, width: 200, crop: :fill %>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="profile-description">
+              <h3><%= @group.title %></h3>
+              <p><%= @group.description%></p>
+              <p>Location: <%= @group.location%></p>
+              <p>Category: <%= @group.category.name %></p>
+              <p>Created: <%= @group.created_at.strftime("%b %d, %Y") %></p>
+              <div class="join-btn">
+                <%= link_to "Become a Member", new_group_membership_path(@group), class:"btn btn-join" %>
               </div>
             </div>
-            <div class="col-sm-6">
-              <div class="profile-description">
-                <h3><%= @group.title %></h3>
-                <p><%= @group.description%></p>
-                <p>Location: <%= @group.location%></p>
-                <p>Category: <%= @group.category.name %></p>
-                <p>Created: <%= @group.created_at.strftime("%b %d, %Y") %></p>
-                <div class="join-btn">
-                  <%= link_to "Become a Member", new_group_membership_path(@group), class:"btn btn-join" %>
-                </div>
-              </div>
-            </div>
-
+          </div>
         </div>
       </div>
       <% if @admin %>
@@ -43,16 +41,18 @@
           </div>
         </div>
       </div>
-    <% end %>
-    <% end %>
+      <% end %>
+      <% end %>
     </div>
   </div>
+</div>
+</div>
 </div>
 
 <!-- in-group comments -->
 <div class="container">
   <div class="row">
-    <div class="col-sm-6">
+    <div class="col-sm-6" style="margin-top: 60px">
       <p id='comment_count'>
         <%= pluralize @group.comments.size, "comment" %>
       </p>
@@ -74,7 +74,6 @@
       </div>
     </div>
   </div>
-</div>
 </div>
 </div>
 
