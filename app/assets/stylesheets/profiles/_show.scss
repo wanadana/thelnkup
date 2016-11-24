@@ -69,6 +69,11 @@
   background-size: cover !important;
   // color: white;
   position: relative;
+  h3 {
+    font-size: 20px;
+    border-bottom: 1px solid #aaaaaa;
+    padding-bottom: 5px;
+  }
 }
 
 .wrapper-green {
@@ -95,7 +100,11 @@
 }
 
 .group-link {
-  text-align: center;
+  // text-align: center;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  width: 70%;
 }
 
 .profile-flex {
@@ -104,4 +113,12 @@
   align-content: center;
   align-items: center;
   height: 100%;
+}
+
+.user-group-image {
+  padding-bottom: 10px;
+  a {
+    text-decoration: none;
+    color: black;
+  }
 }
