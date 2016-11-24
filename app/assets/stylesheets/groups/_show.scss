@@ -114,3 +114,17 @@ top: 57px;
 #comments {
 margin-bottom: 50px;
 }
+
+.btn-login {
+  color: #99C24D;
+  background-color: transparent;
+  border-color: #99C24D;
+}
+
+.btn-login:hover {
+  color: #fff;
+  background-color: #99C24D;
+  transition: 200ms ease-in;
+  border-color: transparent;
+
+}

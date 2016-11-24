@@ -12,6 +12,7 @@ class GroupsController < ApplicationController
     @group = Group.find(params[:id])
     @comment = Comment.new
     @members = @group.memberships.approved.map {|membership|membership.user}
+    @membership = @group.memberships.new
   end
 
 
