@@ -32,12 +32,24 @@ c1=Category.create!(name:"Sports", photo:"http://emojione.com/wp-content/uploads
 c3=Category.create!(name:"Tech", photo:"http://emojione.com/wp-content/uploads/assets/emojis/1f5a5.svg")
 c15=Category.create!(name:"Travel", photo:"http://emojione.com/wp-content/uploads/assets/emojis/2708.svg")
 
-u1=User.create!(first_name:"John", last_name:"Tomkins", photo:"https://s3-us-west-2.amazonaws.com/lumoid-photos/Inspiration/Canon-People-2.jpg", email:"john@tomkins.com", location:"London", mobile:"+44 7700900689", password:"letmein", password_confirmation:"letmein")
-u2=User.create!(first_name:"Lisa", last_name:"Alkin", photo:"https://s-media-cache-ak0.pinimg.com/originals/07/35/79/0735796a20d4aee1773f35ed2b2034ef.jpg", email:"lisa@alkin.com", location:"San Francisco", mobile:"+1 2124139795", password:"letmein", password_confirmation:"letmein")
-u3=User.create!(first_name:"Matthew", last_name:"Woods", photo:"http://www.designboom.com/wp-content/uploads/2014/08/ino-zeljak-stitches-two-different-people-portraits-designboom-07.jpg", email:"matthew@woods.com", location:"Amsterdam", mobile:"+31 0667903675", password:"letmein", password_confirmation:"letmein")
-u4=User.create!(first_name:"Antoine", last_name:"Dubois", photo:"http://www4.pictures.zimbio.com/gi/39th+Annual+People+Choice+Awards+Portraits+lza8vaU_QsZx.jpg", email:"antoine@dubois.com", location:"Paris", mobile:"+33 509758351", password:"letmein", password_confirmation:"letmein")
-u5=User.create!(first_name:"Camila", last_name:"Gallego", photo:"http://cdn.instantshift.netdna-cdn.com/wp-content/uploads/2011/10/httgppp-02.jpg", email:"Camila@Gallego.com", location:"Barcelona", mobile:"+34 7401 049141", password:"letmein", password_confirmation:"letmein")
-u6=User.create!(first_name:"Pontus", last_name:"Johansonn", photo:"http://media.istockphoto.com/photos/portrait-of-smiling-young-man-outdoors-picture-id478022628?k=6&m=478022628&s=170667a&w=0&h=18JwG_PEtRlbcJgQFz2Hjyp78xtnSwNaV9BuhJYUDB0=", email:"pontus@johansson.com", location:"Stockholm", mobile:"+46 1523 089264", password:"letmein", password_confirmation:"letmein")
+u1=User.new(first_name:"John", last_name:"Tomkins", email:"john@tomkins.com", location:"London", mobile:"+44 7700900689", password:"letmein", password_confirmation:"letmein")
+u1.remote_photo_url = "https://s3-us-west-2.amazonaws.com/lumoid-photos/Inspiration/Canon-People-2.jpg"
+u1.save!
+u2=User.new(first_name:"Lisa", last_name:"Alkin", email:"lisa@alkin.com", location:"San Francisco", mobile:"+1 2124139795", password:"letmein", password_confirmation:"letmein")
+u2.remote_photo_url = "https://s-media-cache-ak0.pinimg.com/originals/07/35/79/0735796a20d4aee1773f35ed2b2034ef.jpg"
+u2.save!
+u3=User.new(first_name:"Matthew", last_name:"Woods", email:"matthew@woods.com", location:"Amsterdam", mobile:"+31 0667903675", password:"letmein", password_confirmation:"letmein")
+u3.remote_photo_url = "http://www.designboom.com/wp-content/uploads/2014/08/ino-zeljak-stitches-two-different-people-portraits-designboom-07.jpg"
+u3.save!
+u4=User.new(first_name:"Antoine", last_name:"Dubois", email:"antoine@dubois.com", location:"Paris", mobile:"+33 509758351", password:"letmein", password_confirmation:"letmein")
+u4.remote_photo_url = "http://www4.pictures.zimbio.com/gi/39th+Annual+People+Choice+Awards+Portraits+lza8vaU_QsZx.jpg"
+u4.save!
+u5=User.new(first_name:"Camila", last_name:"Gallego", email:"Camila@Gallego.com", location:"Barcelona", mobile:"+34 7401 049141", password:"letmein", password_confirmation:"letmein")
+u5.remote_photo_url = "http://cdn.instantshift.netdna-cdn.com/wp-content/uploads/2011/10/httgppp-02.jpg"
+u5.save!
+u6=User.new(first_name:"Pontus", last_name:"Johansonn", email:"pontus@johansson.com", location:"Stockholm", mobile:"+46 1523 089264", password:"letmein", password_confirmation:"letmein")
+u6.remote_photo_url = "http://media.istockphoto.com/photos/portrait-of-smiling-young-man-outdoors-picture-id478022628?k=6&m=478022628&s=170667a&w=0&h=18JwG_PEtRlbcJgQFz2Hjyp78xtnSwNaV9BuhJYUDB0="
+u6.save!
 
 g1=Group.new(title:"Football Fanatics", description:"We love everything about football! In this group we cover all topics of football concerning the Europian big leagues. We also like to go the stadium or pub to watch the game we love", location:"London",  link:"Ak6a1ueynT27hbe9Jper5c", capacity:45, category_id:c1.id, question:"Why would you like to join?")
 g1.remote_photo_url = "http://i4.mirror.co.uk/incoming/article5530912.ece/ALTERNATES/s615/Arsenal-fans-singing-in-the-stands.jpg"
@@ -130,34 +142,34 @@ g30=Group.new(title:"Sculpture Culture", description:"artsyfarty sculptures", lo
 g30.remote_photo_url = "http://mikefieldsbronzes.com/wp-content/uploads/2013/10/xConvergence-Modern-Science-Contemporary-Sculpture.jpg.pagespeed.ic.65lul14PzM.jpg"
 g30.save!
 
-m1=Membership.create!(user_id:u1.id, group_id:g1.id, status:"approved", admin: true, answer:"let me in plz")
-m2=Membership.create!(user_id:u2.id, group_id:g2.id, status:"approved", admin: true, answer:"let me in plz")
-m3=Membership.create!(user_id:u3.id, group_id:g3.id, status:"approved", admin: true, answer:"let me in plz")
-m4=Membership.create!(user_id:u4.id, group_id:g4.id, status:"approved", admin: true, answer:"let me in plz")
-m5=Membership.create!(user_id:u5.id, group_id:g5.id, status:"approved", admin: true, answer:"let me in plz")
-m6=Membership.create!(user_id:u6.id, group_id:g6.id, status:"approved", admin: true, answer:"let me in plz")
-m7=Membership.create!(user_id:u1.id, group_id:g7.id, status:"approved", admin: true, answer:"let me in plz")
-m8=Membership.create!(user_id:u2.id, group_id:g8.id, status:"approved", admin: true, answer:"let me in plz")
-m9=Membership.create!(user_id:u3.id, group_id:g9.id, status:"approved", admin: true, answer:"let me in plz")
-m10=Membership.create!(user_id:u4.id, group_id:g10.id, status:"approved", admin: true, answer:"let me in plz")
-m11=Membership.create!(user_id:u5.id, group_id:g11.id, status:"approved", admin: true, answer:"let me in plz")
-m12=Membership.create!(user_id:u6.id, group_id:g12.id, status:"approved", admin: true, answer:"let me in plz")
-m13=Membership.create!(user_id:u1.id, group_id:g13.id, status:"approved", admin: true, answer:"let me in plz")
-m14=Membership.create!(user_id:u2.id, group_id:g14.id, status:"approved", admin: true, answer:"let me in plz")
-m15=Membership.create!(user_id:u3.id, group_id:g15.id, status:"approved", admin: true, answer:"let me in plz")
-m16=Membership.create!(user_id:u4.id, group_id:g16.id, status:"approved", admin: true, answer:"let me in plz")
-m17=Membership.create!(user_id:u5.id, group_id:g17.id, status:"approved", admin: true, answer:"let me in plz")
-m18=Membership.create!(user_id:u6.id, group_id:g18.id, status:"approved", admin: true, answer:"let me in plz")
-m19=Membership.create!(user_id:u1.id, group_id:g19.id, status:"approved", admin: true, answer:"let me in plz")
-m20=Membership.create!(user_id:u2.id, group_id:g20.id, status:"approved", admin: true, answer:"let me in plz")
-m21=Membership.create!(user_id:u3.id, group_id:g21.id, status:"approved", admin: true, answer:"let me in plz")
-m22=Membership.create!(user_id:u4.id, group_id:g22.id, status:"approved", admin: true, answer:"let me in plz")
-m23=Membership.create!(user_id:u5.id, group_id:g23.id, status:"approved", admin: true, answer:"let me in plz")
-m24=Membership.create!(user_id:u6.id, group_id:g24.id, status:"approved", admin: true, answer:"let me in plz")
-m25=Membership.create!(user_id:u1.id, group_id:g25.id, status:"approved", admin: true, answer:"let me in plz")
-m26=Membership.create!(user_id:u2.id, group_id:g26.id, status:"approved", admin: true, answer:"let me in plz")
-m27=Membership.create!(user_id:u3.id, group_id:g27.id, status:"approved", admin: true, answer:"let me in plz")
-m28=Membership.create!(user_id:u4.id, group_id:g28.id, status:"approved", admin: true, answer:"let me in plz")
-m29=Membership.create!(user_id:u5.id, group_id:g29.id, status:"approved", admin: true, answer:"let me in plz")
-m30=Membership.create!(user_id:u6.id, group_id:g30.id, status:"approved", admin: true, answer:"let me in plz")
+m1=Membership.create!(user_id:u1.id, group_id:g1.id, status:"joined", admin: true, answer:"let me in plz")
+m2=Membership.create!(user_id:u2.id, group_id:g2.id, status:"joined", admin: true, answer:"let me in plz")
+m3=Membership.create!(user_id:u3.id, group_id:g3.id, status:"joined", admin: true, answer:"let me in plz")
+m4=Membership.create!(user_id:u4.id, group_id:g4.id, status:"joined", admin: true, answer:"let me in plz")
+m5=Membership.create!(user_id:u5.id, group_id:g5.id, status:"joined", admin: true, answer:"let me in plz")
+m6=Membership.create!(user_id:u6.id, group_id:g6.id, status:"joined", admin: true, answer:"let me in plz")
+m7=Membership.create!(user_id:u1.id, group_id:g7.id, status:"joined", admin: true, answer:"let me in plz")
+m8=Membership.create!(user_id:u2.id, group_id:g8.id, status:"joined", admin: true, answer:"let me in plz")
+m9=Membership.create!(user_id:u3.id, group_id:g9.id, status:"joined", admin: true, answer:"let me in plz")
+m10=Membership.create!(user_id:u4.id, group_id:g10.id, status:"joined", admin: true, answer:"let me in plz")
+m11=Membership.create!(user_id:u5.id, group_id:g11.id, status:"joined", admin: true, answer:"let me in plz")
+m12=Membership.create!(user_id:u6.id, group_id:g12.id, status:"joined", admin: true, answer:"let me in plz")
+m13=Membership.create!(user_id:u1.id, group_id:g13.id, status:"joined", admin: true, answer:"let me in plz")
+m14=Membership.create!(user_id:u2.id, group_id:g14.id, status:"joined", admin: true, answer:"let me in plz")
+m15=Membership.create!(user_id:u3.id, group_id:g15.id, status:"joined", admin: true, answer:"let me in plz")
+m16=Membership.create!(user_id:u4.id, group_id:g16.id, status:"joined", admin: true, answer:"let me in plz")
+m17=Membership.create!(user_id:u5.id, group_id:g17.id, status:"joined", admin: true, answer:"let me in plz")
+m18=Membership.create!(user_id:u6.id, group_id:g18.id, status:"joined", admin: true, answer:"let me in plz")
+m19=Membership.create!(user_id:u1.id, group_id:g19.id, status:"joined", admin: true, answer:"let me in plz")
+m20=Membership.create!(user_id:u2.id, group_id:g20.id, status:"joined", admin: true, answer:"let me in plz")
+m21=Membership.create!(user_id:u3.id, group_id:g21.id, status:"joined", admin: true, answer:"let me in plz")
+m22=Membership.create!(user_id:u4.id, group_id:g22.id, status:"joined", admin: true, answer:"let me in plz")
+m23=Membership.create!(user_id:u5.id, group_id:g23.id, status:"joined", admin: true, answer:"let me in plz")
+m24=Membership.create!(user_id:u6.id, group_id:g24.id, status:"joined", admin: true, answer:"let me in plz")
+m25=Membership.create!(user_id:u1.id, group_id:g25.id, status:"joined", admin: true, answer:"let me in plz")
+m26=Membership.create!(user_id:u2.id, group_id:g26.id, status:"joined", admin: true, answer:"let me in plz")
+m27=Membership.create!(user_id:u3.id, group_id:g27.id, status:"joined", admin: true, answer:"let me in plz")
+m28=Membership.create!(user_id:u4.id, group_id:g28.id, status:"joined", admin: true, answer:"let me in plz")
+m29=Membership.create!(user_id:u5.id, group_id:g29.id, status:"joined", admin: true, answer:"let me in plz")
+m30=Membership.create!(user_id:u6.id, group_id:g30.id, status:"joined", admin: true, answer:"let me in plz")
 

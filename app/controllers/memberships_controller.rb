@@ -1,6 +1,6 @@
 class MembershipsController <ApplicationController
-  before_action :set_group, only: [:new, :create, :destroy, :accept, :reject]
-  before_action :set_membership, only: [:destroy, :accept, :reject]
+  before_action :set_group, only: [:new, :create, :destroy, :approve, :reject, :join]
+  before_action :set_membership, only: [:destroy, :approve, :reject, :join]
   before_action :set_admin
   def new
     @membership = @group.memberships.new
@@ -24,8 +24,8 @@ class MembershipsController <ApplicationController
   end
 
 
-  def accept
-    @membership.accept! if @admin
+  def approve
+    @membership.approve! if @admin
     redirect_to group_path(@group)
   end
 
@@ -34,6 +34,10 @@ class MembershipsController <ApplicationController
     redirect_to group_path(@group)
   end
 
+  def join
+    @membership.join!
+    redirect_to "https://chat.whatsapp.com/#{@group.link}"
+  end
 
   private
 

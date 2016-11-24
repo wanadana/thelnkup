@@ -1,37 +1,42 @@
 <!-- Profile info -->
 <div class="container">
   <!-- <div class="bg-grey"> -->
-    <div class="info-card">
-      <div class="profile">
-        <div class="row">
-          <div class="col-sm-6">
-            <div class="profile-pic col">
-              <%= cl_image_tag current_user.photo, height: 250, width: 250, crop: :fill %>
-            </div>
-            <div class="profile-info">
-              <ul style="list-style-type: none;">
-                <li>
-                  Full Name: <%= current_user.first_name + " " + current_user.last_name %>
-                </li>
-                <li>
-                  Email Address: <%= current_user.email %>
-                </li>
-                <li>
-                  Mobile No: <%= current_user.mobile %>
-                </li>
-                <li>
-                  Location: <%= current_user.location %>
-                </li>
-                <br>
-                <%= link_to 'Edit Profile', edit_profile_path, class: "btn btn-edit" %>
-              </ul>
-            </div>
+  <div class="info-card">
+    <div class="profile">
+      <div class="row">
+        <div class="col-sm-3">
+          <div class="profile-flex">
+            <%= cl_image_tag current_user.photo, class: 'avatar-profile' %>
+            <%= link_to 'Edit Profile', edit_profile_path, class: "btn btn-edit", style: "margin-top: 10px;" %>
           </div>
-          <div class="col-sm-6">
-            <div class="link-card">
-              <h2 class="text-center">Group Name</h2>
-             <%= link_to 'Join group', "#", target:"blank", class: "btn btn-default" %>
-            </div>
+        </div>
+        <div class="col-sm-5">
+          <div class="profile-info">
+            <ul style="list-style-type: none;">
+              <li>
+                Full Name: <%= current_user.first_name + " " + current_user.last_name %>
+              </li>
+              <li>
+                Email Address: <%= current_user.email %>
+              </li>
+              <li>
+                Mobile No: <%= current_user.mobile %>
+              </li>
+              <li>
+                Location: <%= current_user.location %>
+              </li>
+              <br>
+            </ul>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="link-card">
+            <% @approved_memberships.each do |membership| %>
+              <h2 class="text-center"> <%= membership.group.title %></h2>
+              <div class="group-link">
+              <%= link_to 'Join group', group_membership_join_path(membership.group, membership), method: :post, target:"blank", class: "btn btn-default" %>
+              </div>
+              <% end -%>
           </div>
         </div>
       </div>
@@ -48,69 +53,17 @@
         <h3 class="text-center">My Groups</h3>
       </div>
       <div class="users-slider center-block">
-        <% @usergroups.each do |membership| %>
-          <div class="center-block">
-            <div class="user-group-image">
-              <%= cl_image_tag(membership.group.photo, height: 150, width: 150, crop: :fill) %>
-            </div>
-            <%= membership.group.title %>
+        <% @admin_memberships.each do |membership| %>
+        <div class="center-block">
+          <div class="user-group-image">
+            <%= cl_image_tag(membership.group.photo, height: 150, width: 150, crop: :fill) %>
           </div>
+          <%= membership.group.title %>
+        </div>
         <% end %>
       </div>
     </div>
   </div>
 </div>
 
-      <!-- Users that have been accepted into your groups -->
-<% if @admin %>
-  <div class="container wrapper-green">
-    <div class="row">
-      <div class="profile-info">
-        <%# if @admin %>
-          <div class="container">
-            <h2 class="text-center">Accepted in your groups:</h2>
-            <div class="row">
-              <% @pending_memberships.each do |m| %>
-              <div class="col-sm-12 col-md-4">
-                <div class="new-card">
-                  <%= image_tag('http://placehold.it/350x350') %>
-                  <div class="card-name"><%= m.user.first_name %></div>
-                  <div class="card-group">Group Name</div>
-                </div>
-              </div>
-              <% end %>
-            </div>
-          </div>
-        <%# end %>
-      </div>
-    </div>
-  </div>
-<% end %>
 
-<!-- User pending forup requests -->
-<!-- <div class="row">
-  <div class="col-md-6">
-    <div class="wrapper-green">
-      <div class="mid_container">
-        <h4 class="text-center">My Pending Requests</h4>
-          <div class="row">
-            <#% @memberships.each do |memberships| %>
-            <div class="col-sm-6 col-md-4">
-              <div class="panel panel-default">
-                <div class="panel-body">
-                  <%#= cl_image_tag(memberships.group.photo, height: 150, width: 150, crop: :fill) %>
-                </div>
-                <div class="caption panel-footer">
-                  <%#= memberships.group.title %>
-                </div>
-              </div>
-            </div>
-            <#% end %>
-          </div>
-      </div>
-    </div>
-  </div> -->
-  <!-- <div class="container col-md-offset-2"> -->
-<!-- <div class="mid_container"> -->
-<!-- Join links -->
-<!-- <div class="row"> -->
