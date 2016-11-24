@@ -5,7 +5,9 @@
     controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
   namespace :users do
-    resources :groups
+    resources :groups do
+      get 'validate', on: :new
+    end
   end
 
   resources :categories do

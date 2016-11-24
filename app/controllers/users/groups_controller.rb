@@ -14,15 +14,32 @@ class Users::GroupsController < ApplicationController
   def create
     @category = Category.find(params[:group][:category_id])
     @group = Group.new(group_params)
+    @group.remote_photo_url = "https://chat.whatsapp.com/invite/icon/#{@group.link}"
     # @group.users << current_user
-
-    if @group.save
-      @membership = Membership.create(user: current_user, status: 'approved', admin: true, group: @group)
-      redirect_to group_path(@group)
+    # page = Nokogiri::HTML(open("https://chat.whatsapp.com/#{@group.link}"))
+    # @group.title = page.at_xpath('//meta[@property ="og:title"]/@content').text
+    if @group.title.present?
+      if @group.save
+        @membership = Membership.create(user: current_user, status: 'approved', admin: true, group: @group)
+        redirect_to group_path(@group)
+      else
+        @categories_with_id = Category.pluck(:name, :id)
+        render :new
+      end
     else
-      @categories_with_id = Category.pluck(:name, :id)
-      render :new
+      # Render an Error
     end
+  end
+
+  def validate
+    @group = Group.new(link: params[:link])
+    @categories_with_id = Category.pluck(:name, :id)
+    page = Nokogiri::HTML(open("https://chat.whatsapp.com/#{@group.link}"))
+    @group.title = page.at_xpath('//meta[@property ="og:title"]/@content').text
+
+      respond_to do |format|
+        format.js
+      end
   end
 
   def edit
