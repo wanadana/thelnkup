@@ -1,12 +1,12 @@
 <% if @group.title == "" %>
   var errorMsg = $("#validation-fail")
-  errorMsg.html("Nah m8 3 cheeky 5 me").show();
+  errorMsg.html("Please enter a valid link").show();
   $('.form-group').addClass('validation-fail');
 
   setTimeout(function(){
     errorMsg.fadeOut()
     $('.form-group').removeClass('validation-fail');
-  }, 1500);
+  }, 4000);
 <% else %>
 $('#group_form').html("<%= j render partial: 'form' %>");
 <% end %>

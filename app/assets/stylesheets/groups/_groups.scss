@@ -1,14 +1,22 @@
 .category-header {
   text-align: center;
   margin-bottom: 20px;
-  background-color: #D0E9EA;
+  margin-right: 20px;
+  margin-left: 20px;
+  margin-top: 10px;
+  background-color: white;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.06), 0 2px 5px 0 rgba(0, 0, 0, 0.2);
   padding: 20px;
+  border-radius: 2px;
 }
 
 .groups-index {
   background-color: white;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.06), 0 2px 5px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 2px;
   padding: 30px;
   margin-bottom: 20px;
+  width: 100%;
   a {
     text-decoration: none;
   }
@@ -36,14 +44,14 @@
   .group:hover { transform: scale(1.03); }
 
 .group-info {
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.06), 0 2px 5px 0 rgba(0, 0, 0, 0.2);
   margin-left: 20px;
   padding: 0px 10px;
   text-decoration: none;
   color: black;
-  border-radius: 2%;
-  background-color: #DEF2C8;
+  background-color: #c7e3e5;
   width: 100%;
-
+  border-radius: 2px;
 }
 
 .group-members {
@@ -54,7 +62,7 @@
   width: 200px;
   height: 200px;
   border-radius: 50%;
-  background-color: #FAF7EB;
+  background-color: #f3f3f3;
   display: flex;
   align-items: center;
   justify-content: center;

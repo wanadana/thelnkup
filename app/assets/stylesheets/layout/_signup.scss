@@ -16,23 +16,6 @@
   border-color: transparent;
 }
 
-.signup-or-separator {
-  background-color: 0;
-  height: 34px;
-  position: relative;
-  text-align:center;
-  margin-bottom: 0px;
-  margin-top: 0px;
-}
-
-.signup-or-separator--text {
-  background-color: #fff;
-  display: inline-block;
-  padding: 8px;
-  margin-bottom: 0px;
-  margin-top: 0px;
-}
-
 .btn-fb {
   border-color: #3B5998;
   background-color: transparent;
@@ -60,21 +43,24 @@
 
 .btn-sign{
   text-decoration: none;
-  border: 1px solid #99C24D;
-  color: #99C24D;
+  color: #fff;
+  background-color: #78ccd0;
   float: right;
   padding: 7px 21px;
   font-size: 14px;
   border-radius: 4px;
   text-align: center;
   width: 100px;
+  box-shadow: 0 1px 5px 0 rgba(0,0,0,.26);
+  transition: background-color 300ms, box-shadow 300ms;
 }
 
 .btn-sign:hover {
-  text-decoration: none;
-  border: 1px solid #99C24D;
-  color: #99C24D;
   cursor:pointer;
+  text-decoration: none;
+  color: #fff;
+  background-color: #78ccd0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.36);
 }
 
 

@@ -1,37 +1,31 @@
+<div class="group-profile">
  <div class="container">
   <div class="row">
-    <div class="col-sm-6 col-sm-offset-3">
-      <h1>Create your group</h1>
-    </div>
+      <h3>Upload your group</h3>
   </div>
   <%= flash[:notice] %>
   <div id="group_form">
-
-  <div id="validation-fail"></div>
-
     <%= form_tag(validate_new_users_group_path, id: 'validate_group', method: 'get', remote: true) do %>
     <%#= label_tag(:guid, "Guid:") %>
     <%#= text_field_tag(:guid) %>
     <%#= submit_tag("Validate") %>
     <div class="row">
-
       <div class="form-group">
-        <div id="group_link_validation" class="hide live_validation" style="color: red; height: 30px; width: 100%;">
-        </div>
         <div class="input-group">
           <div id='group-link-validation'></div>
-
           <span class="input-group-addon" id="basic-addon1">https://chat.whatsapp.com/</span>
           <%= text_field_tag(:link, nil, placeholder:"Add your Whatsapp Group Link", class: "form-control", id: 'validate-field') %>
           <span class="input-group-btn">
-            <%= submit_tag 'Validate', class: 'btn btn-default' %>
+            <%= submit_tag 'Validate', class: 'btn btn-join' %>
           </span>
         </div>
       </div>
+      <div id="group_link_validation" class="hide live_validation" style="color: red; height: 30px; width: 100%;">
+      </div>
+      <div id="validation-fail" style="color: red;"></div>
       <% end %>
-      <%= link_to 'Back', groups_path %>
     </div>
   </div>
 </div>
-
+</div>
 

@@ -14,11 +14,8 @@
         <div class="form-actions">
           <%= f.button :submit, "Log in", class:"btn btn-block btn-login" %>
         </div>
+        <br>
         <% end %>
-        <div class="signup-or-separator">
-          <span class="h6 signup-or-separator--text">or</span>
-          <br>
-        </div>
         <%= link_to "Sign in with Facebook", omniauth_authorize_path("user", "facebook"), class:"btn btn-block btn-fb" %>
         <div class="modal-footer">
           <div class="signupp">
