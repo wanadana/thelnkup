@@ -7,42 +7,40 @@
   <!-- <p> Welcome <%#= current_user.first_name %> </p> -->
   <!-- <#%= link_to "Log Out", destroy_user_session_path, method: :delete %> -->
   <div class="logo-header">
-    <%= image_tag "http://placehold.it/600x250", class:"logo"%>
-  <div class="features">
-    <div class="feature feature-light feature-search">
-      <div class="feature-inner">
-        <h3 class="feature-intro">Something</h3>
-        <h1 class="feature-title">Some funny copy</h1>
-        <div class="feature-text">Keep in touch with people</div>
-        <div class="feature-img">
-          <%= image_tag "text.png", class:"img bounce"%>
-          <br>
-          <br>
-          <br>
-          <br>
-          <%= link_to "View Categories", categories_path, class:"button" %>
-        </div>
-        <div class="feature-inner–">
+    <%= image_tag "thelnkup_logo2-c.png", class:"logo"%>
+    <h3 style="margin-top: 0px; color: #76c8a9">Slogan</h3>
+    <br>
+    <div class="features">
+      <div class="feature feature-light feature-search">
+        <div class="feature-inner">
+          <h3 class="feature-intro">Something</h3>
+          <h1 class="feature-title">Some funny copy</h1>
+          <div class="feature-text">Keep in touch with people</div>
+          <div class="feature-img-container">
+            <div class="feature-img">
+              <%= image_tag "text.png" %>
+            </div>
+            <%= link_to "View Categories", categories_path, class:"button" %>
+          </div>
+          <div class="feature-inner–">
+          </div>
         </div>
       </div>
-    </div>
-    <div class="feature feature-dark feature-groups">
-      <div class="feature-inner">
-        <h3 class="feautre-intro">Something</h3>
-        <h1 class="feature-title">Some funny copy</h1>
-        <div class="feature-text">Keep in touch with people</div>
-        <div class="feature-img">
-          <%= image_tag "selfie.png", class:"img bounce" %>
-          <br>
-          <br>
-          <br>
-          <br>
-          <%= link_to "Create Group", new_users_group_path, class:"button" %>
+      <div class="feature feature-dark feature-groups">
+        <div class="feature-inner">
+          <h3 class="feautre-intro">Something</h3>
+          <h1 class="feature-title">Some funny copy</h1>
+          <div class="feature-text">Keep in touch with people</div>
+          <div class="feature-img">
+            <%= image_tag "selfie.png" %>
+          </div>
+          <div class="feature-button">
+            <%= link_to "Create Group", new_users_group_path, class:"button" %>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 </div>
 
 
