@@ -1,7 +1,7 @@
 $(document).ready(function(){
-  $('#group_link').keyup(function(){
+  $('#validate-field').keyup(function(){
     setTimeout(function(){
-    var input_length = $('#group_link').val().length;
+    var input_length = $('#validate-field').val().length;
     var feedback = $('#group_link_validation');
 
     if(input_length < 22) {

@@ -5,7 +5,8 @@
         <div class="profile">
           <div class="row">
             <div class="profile-picture col-sm-6">
-              <%= cl_image_tag @group.photo, height: 200, width: 300, crop: :fill %>
+              <%#= cl_image_tag @group.photo, height: 200, width: 300, crop: :fill %>
+              <%= image_tag("https://chat.whatsapp.com/invite/icon/#{@group.link}", class: "img-responsive img-circle") %>
             </div>
             <div class="profile-description col-sm-6">
               <h3><%= @group.title %></h3>
