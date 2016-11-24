@@ -1,77 +1,86 @@
 <div class="group-profile">
   <div class="container">
     <div class="row">
-      <div class="col-sm-6">
-        <div class="profile">
-          <div class="row">
-            <div class="profile-picture col-sm-6">
-              <%= cl_image_tag @group.photo, height: 200, width: 300, crop: :fill %>
-            </div>
-            <div class="profile-description col-sm-6">
-              <h3><%= @group.title %></h3>
-              <p><%= @group.description%></p>
-              <p>Location: <%= @group.location%></p>
-              <p>Category: <%= @group.category.name %></p>
-              <p>Created: <%= @group.created_at.strftime("%b %d, %Y") %></p>
-            </div>
-            <div class="join-btn col-sm-6 col-sm-offset-6">
-              <%= link_to "Become a Member", "#", class:"btn-join", data: {toggle: "modal", target: "#myModal" } %>
-
-            </div>
+      <div class="col-md-6 col-sm-12 col-xs-12">
+        <div class="profile-container">
+          <div class="profile-picture ">
+            <%= cl_image_tag @group.photo, height: 140, width: 140, crop: :fill %>
           </div>
-          <div class="row">
-          <div class="profile-info col-sm-6">
-              <% if @admin %>
-              <h3 class="text-left">Group Applicants:</h3>
-            </div>
-            <div class="row">
-              <% @pending_memberships.each do |m| %>
-              <div class="col-sm-12 col-md-6">
-                <div class="new-card">
-                  <%= image_tag('http://placehold.it/350x350') %>
-                  <div class="card-name"><%= m.user.first_name %></div>
-                  <div class="card-answer">Answer 1:</div>
-                  <div card="card-answer-content"><%= m.answer %></div>
-                  <div class="actions">
-                    <%= link_to 'Approve', group_membership_approve_path(@group.id, m.id), method: :post, class: "btn btn-success" %>
-                    <%= link_to 'Reject', group_membership_reject_path(@group.id, m.id), method: :post, class: "btn btn-danger" %>
+          <div class="profile-description">
+            <h3><%= @group.title %></h3>
+            <p><%= @group.description%></p>
+            <p class="info">
+              Location: <%= @group.location%><br>
+              Category: <%= @group.category.name %>
+            </p>
+            <p class="small">Created: <%= @group.created_at.strftime("%b %d, %Y") %></p>
+            <%= link_to "Become a Member", "#", class:"btn btn-join", data: {toggle: "modal", target: "#myModal" } %>
+          </div>
+        </div>
+        <div class="profile-separator"></div>
+      </div>
+      <% if @admin %>
+      <div class="col-sm-12 col-md-6 col-xs-12">
+        <div class="profile-admin">
+          <div class="profile-info">
+            <span class="pending-group-title text-left">Pending group applications: (<%=  @pending_memberships.count %>)</span>
+          </div>
+          <% @pending_memberships.each do |m| %>
+          <div class="new-card">
+            <div class="profile-container">
+              <%= image_tag('http://placehold.it/350x350') %>
+              <div class="new-card-info">
+                <div class="profile-description">
+                  <div class="info"><strong>Name</strong>: <%= m.user.first_name %></div>
+                  <div class="info"><strong>Answer</strong>: <%= m.answer %></div>
+                </div>
+                <div class="actions">
+                  <div>
+                    <%= link_to 'Approve', group_membership_approve_path(@group.id, m.id), method: :post, class: "btn btn-join" %>
+                  </div>
+                  <div>
+                    <%= link_to 'Decline', group_membership_reject_path(@group.id, m.id), method: :post, class: "btn btn-reject" %>
                   </div>
                 </div>
               </div>
-              <% end %>
             </div>
-            <% end %>
           </div>
         </div>
       </div>
+      <% end %>
+      <% end %>
     </div>
   </div>
-  <!-- in-group comments -->
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-6">
-        <h3 id='comment_count'>
-          <%= pluralize @group.comments.size, "comment" %>
-        </h3>
-        <div class="row">
+</div>
+</div>
+</div>
+
+<!-- in-group comments -->
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6" style="margin-top: 60px">
+      <p id='comment_count'>
+        <%= pluralize @group.comments.size, "comment" %>
+      </p>
+      <div class="row">
+        <div id="comments">
+          <% if @group.comments.blank? %>
+          <div id="no_comment">
+            Be the first to leave a comment for <%= @group.title %>
+          </div>
+          <% else %>
+          <% @group.comments.each do |comment| %>
+          <%= render 'comments/show_comment', comment: comment %>
+          <% end %>
+          <% end %>
           <div id="new_comment col-sm-6">
             <%= render 'comments/form_comment' %>
           </div>
-          <div id="comments">
-            <% if @group.comments.blank? %>
-            <div id="no_comment">
-              Be the first to leave a comment for <%= @group.title %>
-            </div>
-            <% else %>
-            <% @group.comments.each do |comment| %>
-            <%= render 'comments/show_comment', comment: comment %>
-            <% end %>
-            <% end %>
-          </div>
         </div>
       </div>
     </div>
   </div>
+</div>
 </div>
 
 <!-- Modal -->
@@ -80,7 +89,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Become a Member</h4>
+        <h4 class="modal-title" id="myModalLabel">Become a member</h4>
       </div>
       <div class="modal-body">
         <h4>Complete the form below to register</h4>
@@ -88,15 +97,15 @@
         <%= @group.question %>
         <br>
         <%= form_for([@group, @membership], url: group_memberships_path(group_id: @group.id)) do |f| %>
-          <div class="row">
-            <div class="col-sm-12">
-              <div class="form-group">
-                <%= f.label :answer %>
-                <%= f.text_field :answer, placeholder:"Your response...", class: "form-control" %>
-              </div>
-              <%= f.button "Submit", class: "btn btn-block btn-login" %>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="form-group">
+              <%= f.label :answer %>
+              <%= f.text_field :answer, placeholder:"Your response...", class: "form-control" %>
             </div>
+            <%= f.button "Submit", class: "btn btn-block btn-login" %>
           </div>
+        </div>
         <% end %>
       </div>
       <!-- <div class="modal-footer">
