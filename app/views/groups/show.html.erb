@@ -32,7 +32,7 @@
                   <div class="card-answer">Answer 1:</div>
                   <div card="card-answer-content"><%= m.answer %></div>
                   <div class="actions">
-                    <%= link_to 'Accept', group_membership_accept_path(@group.id, m.id), method: :post, class: "btn btn-success" %>
+                    <%= link_to 'Approve', group_membership_approve_path(@group.id, m.id), method: :post, class: "btn btn-success" %>
                     <%= link_to 'Reject', group_membership_reject_path(@group.id, m.id), method: :post, class: "btn btn-danger" %>
                   </div>
                 </div>
