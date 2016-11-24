@@ -7,7 +7,8 @@
   padding: 0px 30px;
   align-items: center;
   justify-content: space-between;
-  background-color: rgba(140,211,215,0.2);
+  background-color: rgba(140,211,215,0.4);
+  box-shadow: 0 1px 1px 0 rgba(0,0,0,.1),0 1px 5px 0 rgba(0,0,0,.2);
 }
 
 /* Optional class to fix the navbar on top */
@@ -33,9 +34,10 @@
 
 /* Navbar item */
 .navbar-wagon-item {
-  flex: 0 1 auto;
   cursor: pointer;
   padding: 0 20px;
+  display: flex;
+  align-items: center;
 }
 
 /* Navbar standard link */
@@ -65,7 +67,6 @@
 
 /* Navbar search form */
 .navbar-wagon-search {
-  flex: 0 1 300px;
   display: flex;
   justify-content: flex-end;
   padding: 0 10px;
@@ -82,7 +83,7 @@
   z-index: 1;
 }
 .navbar-wagon-search-input {
-  flex: 0 1 300px;
+  flex: 0 1 250px;
   transition: all 0.15s ease;
   line-height: 40px;
   font-weight: lighter;

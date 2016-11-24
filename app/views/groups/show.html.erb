@@ -1,42 +1,48 @@
 <div class="group-profile">
   <div class="container">
     <div class="row">
-      <div class="col-sm-6">
-        <div class="row">
-          <div class="col-sm-6">
-            <div class="profile-picture ">
-              <%= cl_image_tag @group.photo, height: 200, width: 200, crop: :fill %>
-            </div>
+      <div class="col-md-6 col-sm-12 col-xs-12">
+        <div class="profile-container">
+          <div class="profile-picture ">
+            <%= cl_image_tag @group.photo, height: 140, width: 140, crop: :fill %>
           </div>
-          <div class="col-sm-6">
-            <div class="profile-description">
-              <h3><%= @group.title %></h3>
-              <p><%= @group.description%></p>
-              <p>Location: <%= @group.location%></p>
-              <p>Category: <%= @group.category.name %></p>
-              <p>Created: <%= @group.created_at.strftime("%b %d, %Y") %></p>
-            <div class="join-btn col-sm-6 col-sm-offset-6">
-              <%= link_to "Become a Member", "#", class:"btn btn-join", data: {toggle: "modal", target: "#myModal" } %>
-            </div>
-            </div>
+          <div class="profile-description">
+            <h3><%= @group.title %></h3>
+            <p><%= @group.description%></p>
+            <p class="info">
+              Location: <%= @group.location%><br>
+              Category: <%= @group.category.name %>
+            </p>
+            <p class="small">Created: <%= @group.created_at.strftime("%b %d, %Y") %></p>
+            <%= link_to "Become a Member", "#", class:"btn btn-join", data: {toggle: "modal", target: "#myModal" } %>
           </div>
         </div>
+        <div class="profile-separator"></div>
       </div>
       <% if @admin %>
-      <div class="col-sm-12 col-md-6">
+      <div class="col-sm-12 col-md-6 col-xs-12">
         <div class="profile-admin">
           <div class="profile-info">
-            <h3 class="text-left">Pending Group Application: (<%=  @pending_memberships.count %>)</h3>
+            <span class="pending-group-title text-left">Pending group application: (<%=  @pending_memberships.count %>)</span>
           </div>
           <% @pending_memberships.each do |m| %>
           <div class="new-card">
-            <%= image_tag('http://placehold.it/350x350') %>
-            <div class="card-name"><%= m.user.first_name %></div>
-            <div class="card-answer">Answer 1:</div>
-            <div card="card-answer-content"><%= m.answer %></div>
-            <div class="actions">
-              <%= link_to 'Accept', group_membership_accept_path(@group.id, m.id), method: :post, class: "btn btn-join" %>
-              <%= link_to 'Decline', group_membership_reject_path(@group.id, m.id), method: :post, class: "btn btn-reject" %>
+            <div class="profile-container">
+              <%= image_tag('http://placehold.it/350x350') %>
+              <div class="new-card-info">
+                <div class="profile-description">
+                  <div class="info"><strong>Name</strong>: <%= m.user.first_name %></div>
+                  <div class="info"><strong>Answer</strong>: <%= m.answer %></div>
+                </div>
+                <div class="actions">
+                  <div>
+                    <%= link_to 'Accept', group_membership_accept_path(@group.id, m.id), method: :post, class: "btn btn-join" %>
+                  </div>
+                  <div>
+                    <%= link_to 'Decline', group_membership_reject_path(@group.id, m.id), method: :post, class: "btn btn-reject" %>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -91,15 +97,15 @@
         <%= @group.question %>
         <br>
         <%= form_for([@group, @membership], url: group_memberships_path(group_id: @group.id)) do |f| %>
-          <div class="row">
-            <div class="col-sm-12">
-              <div class="form-group">
-                <%= f.label :answer %>
-                <%= f.text_field :answer, placeholder:"Your response...", class: "form-control" %>
-              </div>
-              <%= f.button "Submit", class: "btn btn-block btn-login" %>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="form-group">
+              <%= f.label :answer %>
+              <%= f.text_field :answer, placeholder:"Your response...", class: "form-control" %>
             </div>
+            <%= f.button "Submit", class: "btn btn-block btn-login" %>
           </div>
+        </div>
         <% end %>
       </div>
       <!-- <div class="modal-footer">
