@@ -18,13 +18,13 @@
 <div class="categories">
   <div class="row">
     <% @categories.each do |category| %>
-    <%= link_to category_groups_path(category) do %>
     <div class="col-sm-6 col-md-4">
       <div class="category">
         <div class="category-img-container">
           <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
             <div class="flipper">
               <div class="front">
+                <%= link_to category_groups_path(category) do %>
                 <div class="category-img">
                   <%= image_tag (category.photo), class:"cat-img" %>
                 </div>

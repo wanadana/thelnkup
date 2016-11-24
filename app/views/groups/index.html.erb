@@ -1,21 +1,32 @@
 <div class="category-header">
-  <h1>Search results</h1>
+  <div class="img-container">
+    <div class="category-image">
+    <%= image_tag ("search.png"), class:"cat-img" %>
+    </div>
+  </div id="search">
+  <%= "You searched for #{(params[:search])}" %>
 </div>
-<div class="groups-containter">
-  <div class="groups-index">
+<div class="container">
+  <div class="row">
+    <div class="groups-index">
       <% @groups.each do |group| %>
-        <%= link_to group_path(group)  do %>
-          <div class="group">
-            <div class="group-pic">
-              <%= cl_image_tag (group.photo), class:"group-img" %>
-            </div>
-            <div class="group-info">
-              <h3><%= group.title %></h3>
-            </div>
-          </div>
-        <% end %>
+      <%= link_to group_path(group)  do %>
+      <div class="group">
+        <div class="group-pic">
+          <%= cl_image_tag (group.photo), class:"group-img" %>
+        </div>
+        <div class="group-info">
+          <h3><%= group.title %></h3>
+          <p><%= group.description %></p>
+          <p class="group-members">
+            Looking for <%= group.capacity %> members
+          </p>
+        </div>
+      </div>
       <% end %>
+      <% end %>
+    </div>
   </div>
 </div>
 
-  <%= link_to 'Back', root_path, class: "btn btn-default" %>
+

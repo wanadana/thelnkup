@@ -1,6 +1,12 @@
-<div class="row">
-  <div class="col-sm-6 col-sm-offset-3">
-    <p><%= comment.content %></p>
-    <p><%= comment.user.first_name + " " + comment.user.last_name + " - " + comment.created_at.strftime("%b %d, %Y") %></p>
+<div class="bubble">
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="bubble-text">
+        <div class="bubble-text-color"
+        <p><%= comment.user.first_name + " " + comment.user.last_name + " - " + comment.created_at.strftime("%b %d, %Y") + " : " %></p>
+      </div>
+      <p><%= comment.content %></p>
+    </div>
   </div>
+</div>
 </div>
