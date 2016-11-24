@@ -4,13 +4,13 @@
   <div class="info-card">
     <div class="profile">
       <div class="row">
-        <div class="col-sm-3">
+        <div class="col-sm-4 col-md-3">
           <div class="profile-flex">
             <%= cl_image_tag current_user.photo, class: 'avatar-profile' %>
             <%= link_to 'Edit Profile', edit_profile_path, class: "btn btn-edit", style: "margin-top: 10px;" %>
           </div>
         </div>
-        <div class="col-sm-5">
+        <div class="col-sm-8 col-md-5">
           <div class="profile-info">
             <ul style="list-style-type: none;">
               <li>
@@ -29,14 +29,15 @@
             </ul>
           </div>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-12 col-md-4">
           <div class="link-card">
-            <% @approved_memberships.each do |membership| %>
-              <h2 class="text-center"> <%= membership.group.title %></h2>
-              <div class="group-link">
+            <% @approved_memberships.first(2).each do |membership| %>
+            <h3> <%= membership.group.title %></h3>
+            <div class="group-link">
+              <%= cl_image_tag membership.group.photo, class: 'avatar-large' %>
               <%= link_to 'Join group', group_membership_join_path(membership.group, membership), method: :post, target:"blank", class: "btn btn-default" %>
-              </div>
-              <% end -%>
+            </div>
+            <% end -%>
           </div>
         </div>
       </div>
@@ -56,9 +57,11 @@
         <% @admin_memberships.each do |membership| %>
         <div class="center-block">
           <div class="user-group-image">
-            <%= cl_image_tag(membership.group.photo, height: 150, width: 150, crop: :fill) %>
+            <%= link_to group_path(membership.group)  do %>
+              <%= cl_image_tag(membership.group.photo, height: 150, width: 150, crop: :fill) %>
+              <%= membership.group.title %>
+            <% end %>
           </div>
-          <%= membership.group.title %>
         </div>
         <% end %>
       </div>
