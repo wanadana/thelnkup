@@ -12,21 +12,15 @@
         </div>
         <div class="col-sm-5">
           <div class="profile-info">
-            <ul style="list-style-type: none;">
-              <li>
-                Full Name: <%= current_user.first_name + " " + current_user.last_name %>
-              </li>
-              <li>
-                Email Address: <%= current_user.email %>
-              </li>
-              <li>
-                Mobile No: <%= current_user.mobile %>
-              </li>
-              <li>
-                Location: <%= current_user.location %>
-              </li>
+            <!-- <ul style="list-style-type: none;"> -->
+              <p class="main">
+              <strong><%= current_user.first_name + " " + current_user.last_name %></strong>
+              </p>
+              <p class="info">
+              <%= current_user.email %><br><%= current_user.mobile %><br>Location: <%= current_user.location %>
+              </p>
               <br>
-            </ul>
+           <!--  </ul> -->
           </div>
         </div>
         <div class="col-sm-4">
@@ -50,7 +44,7 @@
   <div class="row info-card">
     <div class="col-sm-12">
       <div class="content">
-        <h3 class="text-center">My Groups</h3>
+        <h3 class="text-center"><strong> My groups</strong></h3>
       </div>
       <div class="users-slider center-block">
         <% @admin_memberships.each do |membership| %>
