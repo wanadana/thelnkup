@@ -20,21 +20,19 @@
       <div class="col-sm-8">
         <div class="form-group">
           <%= f.label :Title %>
-          <%= f.text_field :title, placeholder:"Horse Lovers", class: "form-control", readonly: true %>
+          <%= f.text_field :title, placeholder:"Group name", class: "form-control", readonly: true %>
         </div>
-
         <div class="form-group">
           <%= f.label :description %>
-          <%= f.text_field :description, placeholder:"I mean, what's not to love about riding a horse...", class: "form-control" %>
+          <%= f.text_field :description, placeholder:"Group's description", class: "form-control" %>
         </div>
-
         <div class="form-group">
           <%= f.label :location %>
-          <%= f.text_field :location, placeholder:"Amsterdam", class: "form-control" %>
+          <%= f.text_field :location, placeholder:"Group's location", class: "form-control" %>
         </div>
         <div class="form-group">
           <%= f.label :capacity %>
-          <%= f.text_field :capacity, placeholder:"A Whatsapp Group can have 256 members max.", class: "form-control" %>
+          <%= f.text_field :capacity, placeholder:"Amount of member (max. 250)", class: "form-control" %>
         </div>
         <div class="form-group">
           <%= f.label :category_id %>
@@ -42,7 +40,7 @@
         </div>
         <div class="form-group">
           <div class="input-group">
-            <%= f.text_field :question, placeholder:"Do you also like horses", class: "form-control" %>
+            <%= f.text_field :question, placeholder:"Group's application question", class: "form-control" %>
             <span class="input-group-addon" id="basic-addon1">?</span>
           </div>
         </div>
