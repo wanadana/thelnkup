@@ -10,13 +10,18 @@
   border-radius: 50%;
   padding: 10px;
 }
+
 .users-slider {
   text-align: center;
-  font-size: 30px;
+  font-size: 20px;
   width: 90%;
   align: center;
   display: flex;
   justify-content: center;
+}
+
+.user-group-image {
+  margin-bottom: 10px;
 }
 
 .info-card {
