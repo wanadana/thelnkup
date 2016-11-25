@@ -4,7 +4,7 @@ class ProfilesController < ApplicationController
   def show
     @user = current_user
     @admin_memberships = current_user.memberships.admin
-    @approved_memberships = current_user.memberships.approved
+    @approved_memberships = current_user.memberships.approved.first
     @joined_memberships = current_user.memberships.joined
   end
 

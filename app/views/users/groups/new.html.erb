@@ -1,9 +1,10 @@
 <div class="group-profile">
  <div class="container">
   <div class="row">
+  <div id="upload-head">
       <h3>Upload your group</h3>
   </div>
-  <%= flash[:notice] %>
+  </div>
   <div id="group_form">
     <%= form_tag(validate_new_users_group_path, id: 'validate_group', method: 'get', remote: true) do %>
     <%#= label_tag(:guid, "Guid:") %>

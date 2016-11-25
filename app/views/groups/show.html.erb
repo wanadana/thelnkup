@@ -28,7 +28,7 @@
           <% @pending_memberships.each do |m| %>
           <div class="new-card">
             <div class="profile-container">
-              <%= image_tag('http://placehold.it/350x350') %>
+              <%= image_tag (m.user.photo) %>
               <div class="new-card-info">
                 <div class="profile-description">
                   <div class="info"><strong>Name</strong>: <%= m.user.first_name %></div>
