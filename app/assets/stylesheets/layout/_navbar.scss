@@ -44,6 +44,10 @@
 .navbar-wagon-link {
   color: #616668;
   font-size: 14px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 3px;
+  margin-left: 10px;
 }
 .navbar-wagon-link:hover {
   color: #76c8a9;
@@ -60,9 +64,11 @@
   background-color: transparent;
   color: #616668;
   font-size: 14px;
+  box-shadow: none;
 }
 .navbar-wagon-button:hover {
-   color: #8CD3D7;
+   color: #76c8a9;
+   box-shadow: none;
 }
 
 /* Navbar search form */
@@ -86,8 +92,7 @@
   flex: 0 1 250px;
   transition: all 0.15s ease;
   line-height: 40px;
-  font-weight: lighter;
-  color: #CCCCCC;
+  color: #929191;
   border: 1px solid #CCCCCC;
   background-color: transparent;
   border-radius: 5px;

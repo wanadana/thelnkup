@@ -96,14 +96,14 @@
         <br>
         <%= @group.question %>
         <br>
+        <br>
         <%= form_for([@group, @membership], url: group_memberships_path(group_id: @group.id)) do |f| %>
         <div class="row">
           <div class="col-sm-12">
             <div class="form-group">
-              <%= f.label :answer %>
-              <%= f.text_field :answer, placeholder:"Your response...", class: "form-control" %>
+              <%= f.text_field :answer, placeholder:"Your response...", class: "form-control", label: false %>
             </div>
-            <%= f.button "Submit", class: "btn btn-block btn-login" %>
+            <%= f.button "Submit", class: "btn btn-block btn-join" %>
           </div>
         </div>
         <% end %>

@@ -4,32 +4,43 @@
   margin: 20px;
 }
 
+.avatar-profile{
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  padding: 10px;
+}
+
 .users-slider {
   text-align: center;
-  font-size: 30px;
+  font-size: 20px;
   width: 90%;
   align: center;
   display: flex;
   justify-content: center;
 }
 
+.user-group-image {
+  margin-bottom: 10px;
+}
+
 .info-card {
-  background-color: #DEF2C8;
-  box-shadow: 0px 0px 5px rgba(0.5,0.5,0.5,0.5);
+  background-color: #fff;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.06), 0 2px 5px 0 rgba(0, 0, 0, 0.2);
   margin: 10px;
 }
 
 .btn-edit {
-  color: #99C24D;
-  background-color: transparent;
-  border-color: #99C24D;
+  color: #fff;
+  background-color: #78ccd0;
+  border-color: transparent;
   text-decoration: none;
+  margin-bottom: 10px;
 }
 
 .btn-edit:hover {
   color: #fff;
-  background-color: #99C24D;
-  transition: 200ms ease-in;
+  background-color: #78ccd0;
   border-color: transparent;
   text-decoration: none;
 }
@@ -66,8 +77,7 @@
 }
 
 .content h3 {
-  color: #FFECCC;
-  text-shadow: 2px 2px 0.5px rgba(0.5,0.5,0.5,0.3);
+  font-size: 22px;
 }
 
 .slick-prev::before, .slick-next::before {
@@ -93,3 +103,18 @@
   align-items: center;
   height: 100%;
 }
+
+.profile-info{
+  padding-left: 15px;
+  padding-top: 15px;
+  margin-top: 40px;
+
+  .main {
+    font-size: 18px;
+  }
+
+  .info{
+    font-size: 14px;
+  }
+  }
+
