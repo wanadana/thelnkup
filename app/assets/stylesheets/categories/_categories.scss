@@ -39,6 +39,7 @@
   align-items: center;
   justify-content: center;
   color: #78ccd0;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.06), 0 2px 5px 0 rgba(0, 0, 0, 0.2);
 
   h3 {
     font-size: 22px;
@@ -81,6 +82,7 @@
       margin-left: 115px;
     }
     .btn-extended{
+      box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.06), 0 2px 5px 0 rgba(0, 0, 0, 0.2);
       margin-left: -185px;
       width: 300px;
       padding: 20px 30px;
@@ -90,8 +92,9 @@
   }
 
   .btn-search{
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.06), 0 2px 5px 0 rgba(0, 0, 0, 0.2);
     position: absolute;
-    background-color: #99C24D;
+    background-color: #78ccd0;
     color: white;
     width : 70px; height: 70px;
     left: 50%; margin-left: -35px;
