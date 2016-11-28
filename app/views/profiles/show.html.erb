@@ -26,9 +26,10 @@
         <div class="col-sm-4">
           <div class="link-card">
             <% @approved_memberships.each do |membership| %>
-            <h2 class="text-center"> <%= membership.group.title %></h2>
+            <p class="text-center"> <strong><%= membership.group.title %></strong></p>
             <div class="group-link">
-              <%= link_to 'Join group', group_membership_join_path(membership.group, membership), method: :post, target:"blank", class: "btn btn-default" %>
+              <br>
+              <%= link_to 'Join group', group_membership_join_path(membership.group, membership), method: :post, target:"blank", class: "btn btn-join" %>
             </div>
             <% end -%>
           </div>
