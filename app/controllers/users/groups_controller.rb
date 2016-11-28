@@ -3,7 +3,7 @@ class Users::GroupsController < ApplicationController
   before_action :set_group, only: [:edit, :destroy, :index, :show]
 
   def index
-    @group = Group.all
+    @group = Group.all.sorted
   end
 
   def new
@@ -15,9 +15,7 @@ class Users::GroupsController < ApplicationController
     @category = Category.find(params[:group][:category_id])
     @group = Group.new(group_params)
     @group.remote_photo_url = "https://chat.whatsapp.com/invite/icon/#{@group.link}"
-    # @group.users << current_user
-    # page = Nokogiri::HTML(open("https://chat.whatsapp.com/#{@group.link}"))
-    # @group.title = page.at_xpath('//meta[@property ="og:title"]/@content').text
+
     if @group.title.present?
       if @group.save
         @membership = Membership.create(user: current_user, status: 'approved', admin: true, group: @group)
