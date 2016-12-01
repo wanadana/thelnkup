@@ -54,7 +54,7 @@ class Users::GroupsController < ApplicationController
   end
 
   def destroy
-    @category = Category.find(params[:id])
+    #@category = Category.find(params[:id])
     @group.destroy
       redirect_to category_groups_path(@group.category)
   end
