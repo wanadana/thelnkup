@@ -13,7 +13,7 @@ class CommentsController < ApplicationController
       end
     else
       respond_to do |format|
-        format.html { redirect_to group_path(@group) }
+        format.html { render 'groups/show' }
         format.js
       end
     end

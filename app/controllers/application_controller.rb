@@ -3,6 +3,9 @@ class ApplicationController < ActionController::Base
     before_action  :configure_permitted_parameters, if: :devise_controller?
     before_action  :profile_requirement_check
 
+
+
+
   protected
 
   def configure_permitted_parameters

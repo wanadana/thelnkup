@@ -29,7 +29,7 @@
             <p class="text-center"> <strong><%= membership.group.title %></strong></p>
             <div class="group-link">
               <br>
-              <%= link_to 'Join group', group_membership_join_path(membership.group, membership), method: :post, target:"blank", class: "btn btn-join" %>
+              <%= link_to 'Join group', group_membership_join_path(membership.group, membership).last, method: :post, target:"blank", class: "btn btn-join" %>
             </div>
             <% end -%>
           </div>
