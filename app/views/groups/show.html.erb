@@ -15,6 +15,9 @@
             </p>
             <p class="small">Created: <%= @group.created_at.strftime("%b %d, %Y") %></p>
             <%= link_to "Become a Member", "#", class:"btn btn-join", data: {toggle: "modal", target: "#myModal" } %>
+            <% if @admin %>
+            <%= link_to 'Delete group', users_group_path(@group), class: "btn btn-edit", method: :delete, data: { confirm: "Are you sure you want to delete this group?"} %>
+            <% end %>
           </div>
         </div>
         <div class="profile-separator"></div>
@@ -72,7 +75,7 @@
           <% @group.comments.each do |comment| %>
           <%= render 'comments/show_comment', comment: comment %>
           <% if comment.user == current_user %>
-          <%= link_to 'Delete comment', group_path(@group, comment), class: "btn btn-edit", method: :delete, data: { confirm: "Are you sure?"} %>
+          <%= link_to 'Delete comment', group_comment_path(@group, comment), class: "btn btn-edit", method: :delete, data: { confirm: "Are you sure you want to delete this comment?"} %>
           <% end %>
           <% end %>
           <% end %>
