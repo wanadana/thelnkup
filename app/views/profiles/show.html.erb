@@ -25,7 +25,7 @@
         </div>
         <div class="col-sm-4">
           <div class="link-card">
-            <% @approved_memberships.each do |membership| %>
+            <% @approved_memberships.first(1).each do |membership| %>
             <p class="text-center"> <strong><%= membership.group.title %></strong></p>
             <div class="group-link">
               <br>
@@ -49,7 +49,7 @@
       </div>
       <div class="users-slider center-block">
         <% @admin_memberships.each do |membership| %>
-          <%#= link_to group_path(membership.group) do %>
+          <%= link_to group_path(membership.group) do %>
         <div class="center-block">
           <div class="user-group-image">
             <%= cl_image_tag(membership.group.photo, height: 120, width: 120, crop: :fill) %>
@@ -57,7 +57,7 @@
           <p><%= membership.group.title %></p>
         </div>
         <% end %>
-        <%# end %>
+        <% end %>
       </div>
     </div>
   </div>

@@ -71,8 +71,12 @@
           <% else %>
           <% @group.comments.each do |comment| %>
           <%= render 'comments/show_comment', comment: comment %>
+          <% if comment.user == current_user %>
+          <%= link_to 'Delete comment', group_path(@group, comment), class: "btn btn-edit", method: :delete, data: { confirm: "Are you sure?"} %>
           <% end %>
           <% end %>
+          <% end %>
+
           <div id="new_comment col-sm-6">
             <%= render 'comments/form_comment' %>
           </div>
