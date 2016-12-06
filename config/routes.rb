@@ -18,7 +18,7 @@
     resources :memberships, only: [:new, :create, :update, :destroy] do
       post :approve, :reject, :join
     end
-    resources :comments, only: [:create]
+    resources :comments, only: [:create, :destroy]
   end
 
   # resources :categories, only: [:index, :show]

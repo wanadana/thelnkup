@@ -3,7 +3,7 @@ class Users::GroupsController < ApplicationController
   before_action :set_group, only: [:edit, :destroy, :index, :show]
 
   def index
-    @group = Group.all.sorted
+    @group = Group.all.sort
   end
 
   def new
@@ -41,7 +41,7 @@ class Users::GroupsController < ApplicationController
   end
 
   def edit
-    render "Access denied" unless current_user = @group.user
+    @group = Group.find(params[:id])
   end
 
   def update
@@ -54,7 +54,7 @@ class Users::GroupsController < ApplicationController
   end
 
   def destroy
-    @category = Category.find(params[:id])
+    #@category = Category.find(params[:id])
     @group.destroy
       redirect_to category_groups_path(@group.category)
   end
